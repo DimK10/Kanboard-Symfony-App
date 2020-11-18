@@ -31,7 +31,7 @@ class UserFixtures extends BaseFixture
             $user->setFirstname($this->faker->firstName);
             $user->setLastname($this->faker->lastName);
 
-            $user->setRoles(["ROLE_FULLY_AUTHENTICATED"]);
+            $user->setRoles(["IS_AUTHENTICATED_FULLY"]);
             $user->setPassword($this->passwordEncoder->encodePassword($user, '123456'));
 
             $user->addWorkspaceId(null);

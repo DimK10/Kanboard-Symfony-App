@@ -19,6 +19,23 @@ class WorkspaceRepository extends ServiceEntityRepository
         parent::__construct($registry, Workspace::class);
     }
 
+    /**
+     * @param int $userId
+     * @return Workspace[] Returns an array of Workspace objects
+     */
+
+    public function findByAllWorkspacesForSpecificUser(int $userId)
+    {
+        return $this->createQueryBuilder('w')
+            ->leftJoin('w.user_id', 'u')
+            ->andWhere('u.id = :userId')
+            ->setParameter('userId', $userId)
+            ->orderBy('w.id', 'ASC')
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
     // /**
     //  * @return Workspace[] Returns an array of Workspace objects
     //  */

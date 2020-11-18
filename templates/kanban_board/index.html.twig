@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}KanBoard App{% endblock %}
+
+{% block body %}
+    <body>
+    <main>
+        <nav class="navbar navbar-light bg-primary position-fixed main-page__navbar">
+            <span class="navbar-brand mb-0 h1 text-white ">KanBoard App</span>
+        </nav>
+        <div class="container main-page__container">
+            {% for workspace in workspaces %}
+                <div class="row">
+                    {{ workspace.name }}
+                </div>
+                <div class="row">
+                {% for progress in progresses %}
+                        <div class="col-3">
+                            {{ progress.description }}
+                        </div>
+                {% endfor %}
+                </div>
+            {% endfor %}
+        </div>
+    </main>
+    </body>
+
+{% endblock %}

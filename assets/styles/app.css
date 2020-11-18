@@ -9896,5 +9896,13 @@ h3 {
     border-color: #dee2e6;
   }
 }
+.main-page__navbar {
+  width: 100%;
+  top: 0;
+}
+
+.main-page__container {
+  margin-top: 5rem;
+}
 
 /*# sourceMappingURL=app.css.map */

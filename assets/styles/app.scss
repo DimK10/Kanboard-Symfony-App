@@ -1,1 +1,11 @@
 @import "../../node_modules/bootstrap/scss/bootstrap";
+
+// custom
+.main-page__navbar {
+  width: 100%;
+  top: 0;
+}
+
+.main-page__container {
+  margin-top: 5rem;
+}
