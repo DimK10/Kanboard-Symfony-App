@@ -20,14 +20,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f44fcf20-f461-4aaa-a1b4-ceccfdfb1731" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Service/ProgressService.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/KanbanBoardController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/KanbanBoardController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DataFixtures/ProgressFixtures.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/DataFixtures/ProgressFixtures.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Progress.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Progress.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Task.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Task.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/ProgressRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/ProgressRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Service/WorkspaceService.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Service/WorkspaceService.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/styles/_progress.scss" beforeDir="false" afterPath="$PROJECT_DIR$/assets/styles/_progress.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/styles/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/assets/styles/app.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/styles/app.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/assets/styles/app.css.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/kanban_board/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/kanban_board/index.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -195,7 +193,7 @@
       <workItem from="1605887264805" duration="107000" />
       <workItem from="1605887643726" duration="655000" />
       <workItem from="1605892552102" duration="41000" />
-      <workItem from="1605892615193" duration="4014000" />
+      <workItem from="1605892615193" duration="8803000" />
     </task>
     <servers />
   </component>

@@ -16,12 +16,29 @@
                 <div class="row progress__container">
                     {% for progress in progresses %}
                         <div class="col-3">
-                            <div class="card progress__body">
-                                <div class="card-body progress__body--contents">
-                                    <div class="card-title progress__body--title" style="background-color: {{ progress.color }}">
+                            <div class="progress__body">
+                                <div class="progress__body--contents">
+                                    <div class="progress__body--title" style="background-color: {{ progress.color }}">
                                         <h4>{{ progress.description }}</h4>
+                                        <i class="fas fa-plus fa-2x"></i>
+                                    </div>
+                                    <div class="progress__card" style="background-color:  {{ progress.color }}">
+                                        <div class="progress__card--name">
+                                            <div class="progress__card--text">
+                                                <span>Test</span>
+                                            </div>
+                                            <div class="progress__card--icons">
+                                                <i class="fas fa-pencil-alt"></i>
+                                                <i class="fas fa-trash-alt"></i>
+                                            </div>
+                                        </div>
+                                        <hr />
+                                        <div class="progress__card--description">
+                                            TestTestTestTestTestTestTestTest
+                                        </div>
                                     </div>
                                 </div>
+
                             </div>
                         </div>
                     {% endfor %}
