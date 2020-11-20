@@ -15,7 +15,7 @@ use Symfony\Component\Security\Core\User\UserInterface;
 class KanbanBoardController extends AbstractController
 {
     /**
-     * @Route("/kanban/board", name="homepage")
+     * @Route("/", name="homepage")
      */
     public function index(WorkspaceService $workspaceService): Response
     {

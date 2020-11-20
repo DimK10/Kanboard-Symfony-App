@@ -8,18 +8,25 @@
         <nav class="navbar navbar-light bg-primary position-fixed main-page__navbar">
             <span class="navbar-brand mb-0 h1 text-white ">KanBoard App</span>
         </nav>
-        <div class="container main-page__container">
+        <div class="container d-flex flex-column main-page__container">
             {% for workspace in workspaces %}
-                <div class="row">
-                    {{ workspace.name }}
+                <div class="jumbotron">
+                    <h1 class="display-4">{{ workspace.name }}</h1>
                 </div>
-                <div class="row">
-                {% for progress in progresses %}
+                <div class="row progress__container">
+                    {% for progress in progresses %}
                         <div class="col-3">
-                            {{ progress.description }}
+                            <div class="card progress__body">
+                                <div class="card-body progress__body--contents">
+                                    <div class="card-title progress__body--title" style="background-color: {{ progress.color }}">
+                                        <h4>{{ progress.description }}</h4>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                {% endfor %}
+                    {% endfor %}
                 </div>
+
             {% endfor %}
         </div>
     </main>

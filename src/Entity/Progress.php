@@ -34,6 +34,11 @@ class Progress
      */
     private $workspace_id;
 
+    /**
+     * @ORM\Column(type="string", length=7)
+     */
+    private $color;
+
     public function __construct()
     {
         $this->task_id = new ArrayCollection();
@@ -94,6 +99,18 @@ class Progress
     public function setWorkspaceId(?Workspace $workspace_id): self
     {
         $this->workspace_id = $workspace_id;
+
+        return $this;
+    }
+
+    public function getColor(): ?string
+    {
+        return $this->color;
+    }
+
+    public function setColor(string $color): self
+    {
+        $this->color = $color;
 
         return $this;
     }
