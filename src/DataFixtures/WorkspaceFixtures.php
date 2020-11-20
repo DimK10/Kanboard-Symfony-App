@@ -20,7 +20,7 @@ class WorkspaceFixtures extends BaseFixture implements DependentFixtureInterface
             $workspace->setName("My workspace");
             $workspace->setDescription("This is an auto generated workpce to get you started!");
 
-            $workspace->addUserId($this->getRandomReference('users'));
+            $workspace->addUserId($this->getReference('users_0'));
 
             $workspace->addTaskId(null);
 

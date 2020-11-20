@@ -39,6 +39,11 @@ class Progress
      */
     private $color;
 
+    /**
+     * @ORM\Column(type="smallint")
+     */
+    private $priority;
+
     public function __construct()
     {
         $this->task_id = new ArrayCollection();
@@ -111,6 +116,18 @@ class Progress
     public function setColor(string $color): self
     {
         $this->color = $color;
+
+        return $this;
+    }
+
+    public function getPriority(): ?int
+    {
+        return $this->priority;
+    }
+
+    public function setPriority(int $priority): self
+    {
+        $this->priority = $priority;
 
         return $this;
     }

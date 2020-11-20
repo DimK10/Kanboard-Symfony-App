@@ -16,6 +16,7 @@ class WorkspaceService
 
     /**
      * WorkspaceService constructor.
+     * @param WorkspaceRepository $workspaceRepository
      */
     public function __construct(WorkspaceRepository $workspaceRepository)
     {

@@ -22,6 +22,20 @@ class ProgressRepository extends ServiceEntityRepository
     // /**
     //  * @return Progress[] Returns an array of Progress objects
     //  */
+
+    public function findByIdOrderByPriority()
+    {
+        return $this->createQueryBuilder('p')
+            ->orderBy('p.priority', 'DESC')
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
+
+    // /**
+    //  * @return Progress[] Returns an array of Progress objects
+    //  */
     /*
     public function findByExampleField($value)
     {

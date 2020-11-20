@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Progress;
 use App\Entity\User;
+use App\Service\ProgressService;
 use App\Service\WorkspaceService;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityManagerInterface;
@@ -16,8 +17,11 @@ class KanbanBoardController extends AbstractController
 {
     /**
      * @Route("/", name="homepage")
+     * @param WorkspaceService $workspaceService
+     * @param ProgressService $progressService
+     * @return Response
      */
-    public function index(WorkspaceService $workspaceService): Response
+    public function index(WorkspaceService $workspaceService, ProgressService $progressService): Response
     {
         $username = $this->getUser()->getUsername();
         $user = $this->getDoctrine()->getRepository(User::class)->findBy(["email" => $username])[0];
@@ -26,7 +30,8 @@ class KanbanBoardController extends AbstractController
         // TODO - Add functionality for multiple workspaces
         // Get all progresses from workspace
         $workspace = $workspaces[0];
-        $progresses = $this->getDoctrine()->getRepository(Progress::class)->findBy(["workspace_id" => $workspace->getId()]);
+//        $progresses = $this->getDoctrine()->getRepository(Progress::class)->findBy(["workspace_id" => $workspace->getId()]);
+        $progresses = $progressService->findAllByIdOrderByPriority();
         return $this->render('kanban_board/index.html.twig', [
             'workspaces' => $workspaces,
             'progresses' => $progresses

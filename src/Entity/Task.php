@@ -44,6 +44,11 @@ class Task
      */
     private $workspace_id;
 
+    /**
+     * @ORM\Column(type="smallint")
+     */
+    private $priority;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -105,6 +110,18 @@ class Task
     public function setWorkspaceId(?Workspace $workspace_id): self
     {
         $this->workspace_id = $workspace_id;
+
+        return $this;
+    }
+
+    public function getPriority(): ?int
+    {
+        return $this->priority;
+    }
+
+    public function setPriority(int $priority): self
+    {
+        $this->priority = $priority;
 
         return $this;
     }
