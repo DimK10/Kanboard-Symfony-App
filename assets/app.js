@@ -13,6 +13,10 @@ import './styles/app.css';
 import $ from 'jquery'
 global.$ = global.jQuery = $
 
+import 'jquery-ui-sortable-npm';
+
+
+
 import './js/kanBanBoard.js'
 
 console.log('Hello Webpack Encore! Edit me in assets/app.js');
