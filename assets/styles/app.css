@@ -9952,6 +9952,12 @@ h3 {
 .progress__card--description {
   width: 100%;
 }
+.progress__card--input-text {
+  width: 80%;
+}
+.progress__card--textarea-text {
+  margin: 0.5rem;
+}
 
 .main-page__navbar {
   width: 100%;
