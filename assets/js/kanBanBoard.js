@@ -1,6 +1,6 @@
 import Sortable from 'sortablejs';
 
-$(document).ready(function () {
+$(function () {
     let areaForProgressCards = $('.progress__body--contents');
 
     // Handle drag and drop, and sorting the cards
@@ -54,9 +54,30 @@ $(document).ready(function () {
         )
     })
 
-    // Handle deletion of card
+    
+
+
+    
     let $progressCardsBodies = $(".progress__body--contents");
 
+    // Update a card with new data 
+    $progressCardsBodies.on("click", ".fa-pencil-alt", function(e) {
+        e.stopPropagation();
+        // console.log($(this).closest(".progress__card").find("span"));
+
+        // Get the values from the progress__card
+        let $editedProgressCard = $(this).closest(".progress__card");
+        // TODO -SANITIZE!!!
+        let $inputText = $editedProgressCard.find("span").text();
+
+        // Replace span with input element 
+        // let $editInput = $(document.createElement("input")).addClass("input-group progress__card--input-text").val($inputText);
+        let $editInput = $("<div class='input-group progress__card--input-text'></div>").append($(document.createElement("input")).addClass("form-control").val($inputText))
+        $editedProgressCard.find("span").closest(".progress__card--text").attr("class", "progress__card--name").replaceWith($editInput)
+    })
+
+
+    // Handle deletion of card
     $progressCardsBodies.on("click", ".fa-trash-alt", function () {
         $(this).closest(".progress__card").remove();
     })

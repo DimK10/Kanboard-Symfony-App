@@ -13,7 +13,7 @@ import './styles/app.css';
 import $ from 'jquery'
 global.$ = global.jQuery = $
 
-import 'jquery-ui-sortable-npm';
+// import 'jquery-ui-sortable-npm';
 
 
 
