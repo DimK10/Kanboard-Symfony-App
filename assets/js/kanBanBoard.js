@@ -8,8 +8,15 @@ $(function () {
         new Sortable(
             area, {
                 group: 'shared',
-                animation: 150
+                animation: 150,
+                onEnd: function (e) {
+                    // Change color when dropped to that column
+                    let $parentColumn = $(e.to).parent();
+                    let $columnTitleBackgroundColor = $parentColumn.find(".progress__body--title").css("background-color");
 
+                    // Set the background color to card
+                    $(e.item).css("background-color", $columnTitleBackgroundColor);
+                }
         })
     }
 
