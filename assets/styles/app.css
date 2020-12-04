@@ -9971,6 +9971,15 @@ h3 {
   margin: 0.5rem;
 }
 
+body {
+  overflow-y: hidden;
+  background-color: #EBEDEF;
+}
+
+.container {
+  min-height: 100vh;
+}
+
 .main-page__navbar {
   width: 100%;
   top: 0;
