@@ -1,6 +1,11 @@
 import Sortable from 'sortablejs';
 
 $(function () {
+
+
+
+
+
     let areaForProgressCards = $('.progress__body--contents');
 
     // Handle drag and drop, and sorting the cards
@@ -48,6 +53,9 @@ $(function () {
             "                                                 </div>\n" +
             "                                            <div class=\"progress__card--icons\">\n" +
             "                                                <i class='fa fa-check' aria-hidden='true'></i>\n" +
+            "                                                <div id=\"tooltip\">\n" +
+            "                                                    You cannot have blank title or description!\n" +
+            "                                                </div>\n" +
             "                                                <svg class=\"svg-inline--fa fa-trash-alt fa-w-14\" aria-hidden=\"true\" focusable=\"false\" data-prefix=\"fas\" data-icon=\"trash-alt\" role=\"img\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 448 512\" data-fa-i2svg=\"\"><path fill=\"currentColor\" d=\"M32 464a48 48 0 0 0 48 48h288a48 48 0 0 0 48-48V128H32zm272-256a16 16 0 0 1 32 0v224a16 16 0 0 1-32 0zm-96 0a16 16 0 0 1 32 0v224a16 16 0 0 1-32 0zm-96 0a16 16 0 0 1 32 0v224a16 16 0 0 1-32 0zM432 32H312l-9.4-18.7A24 24 0 0 0 281.1 0H166.8a23.72 23.72 0 0 0-21.4 13.3L136 32H16A16 16 0 0 0 0 48v32a16 16 0 0 0 16 16h416a16 16 0 0 0 16-16V48a16 16 0 0 0-16-16z\"></path></svg><!-- <i class=\"fas fa-trash-alt\"></i> Font Awesome fontawesome.com -->\n" +
             "                                            </div>\n" +
             "                                        </div>\n" +
@@ -66,6 +74,46 @@ $(function () {
 
     
     let $progressCardsBodies = $(".progress__body--contents");
+
+    // Accept new card with data and initialize card
+    $progressCardsBodies.on("click", ".fa-check", function (e) {
+        e.stopPropagation();
+
+        let $initializedProgressCard = $(this).closest(".progress__card");
+
+        // take the data from the input
+        $initializedProgressCard.find(".fa-times-circle").replaceWith("<i class='fas fa-trash-alt'></i>")
+
+        // TODO -SANITIZE
+        let $inputText = $initializedProgressCard.find("input").val();
+
+        // Grab any text that already existed in textarea
+        let $descpriptionBeforeInitialization = $initializedProgressCard.find("textarea").val();
+
+        if ($inputText !== "" && $descpriptionBeforeInitialization !== "") {
+            // Replace input with a span element
+            $initializedProgressCard.find(".input-group.progress__card--input-text input").replaceWith($(document.createElement("span")).text($inputText))
+            $initializedProgressCard.find(".input-group.progress__card--input-text").attr("class", "progress__card--text")
+
+
+
+            // reset to p element
+            // todo sanitize
+            $initializedProgressCard.find(".form-group.progress__card--textarea-text").replaceWith($(document.createElement("p")).text($descpriptionBeforeInitialization));
+
+        } else {
+            // User is trying to create an empty card - warn him
+            $initializedProgressCard.find('#tooltip').show().animate({ opacity: 1 }, 500);
+
+
+
+        }
+
+
+
+
+
+    })
 
     // Update a card with new data 
     $progressCardsBodies.on("click", ".fa-pencil-alt", function(e) {
@@ -135,5 +183,12 @@ $(function () {
     // Handle deletion of card
     $progressCardsBodies.on("click", ".fa-trash-alt", function () {
         $(this).closest(".progress__card").remove();
+    })
+
+    $(document).on("click", function () {
+        // FIXME - BUG ON MULTIPLE TOOLTIPS
+        $("#tooltip").each(function () {
+            $(this).animate({ opacity: 0 }).hide();
+        })
     })
 })

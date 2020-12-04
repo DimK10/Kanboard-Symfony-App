@@ -51,6 +51,19 @@
     }
     &--icons {
       padding-top: .3rem;
+      position: relative;
+
+      #tooltip {
+        display: none;
+        opacity: 0;
+        position: absolute;
+        background-color: #5B8DF4;
+        left: 1rem;
+        width: 20rem;
+        z-index: 90;
+        border: 1px solid;
+        border-radius: .3rem;
+      }
 
       & > svg {
         margin-left: .2rem;

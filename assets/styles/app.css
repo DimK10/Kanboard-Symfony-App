@@ -9944,6 +9944,18 @@ h3 {
 }
 .progress__card--icons {
   padding-top: 0.3rem;
+  position: relative;
+}
+.progress__card--icons #tooltip {
+  display: none;
+  opacity: 0;
+  position: absolute;
+  background-color: #5B8DF4;
+  left: 1rem;
+  width: 20rem;
+  z-index: 90;
+  border: 1px solid;
+  border-radius: 0.3rem;
 }
 .progress__card--icons > svg {
   margin-left: 0.2rem;
