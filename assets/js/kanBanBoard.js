@@ -70,10 +70,17 @@ $(function () {
     // Update a card with new data 
     $progressCardsBodies.on("click", ".fa-pencil-alt", function(e) {
         e.stopPropagation();
-        // console.log($(this).closest(".progress__card").find("span"));
+
+
+
 
         // Get the values from the progress__card
         let $editedProgressCard = $(this).closest(".progress__card");
+
+        // Change delete icon to stop edit
+        console.log($(this).parent().find(".fa-trash-alt"))
+        $editedProgressCard.find(".fa-trash-alt").replaceWith("<i class='far fa-times-circle'></i>")
+
         // TODO -SANITIZE!!!
         let $inputText = $editedProgressCard.find("span").text();
 
@@ -81,8 +88,49 @@ $(function () {
         // let $editInput = $(document.createElement("input")).addClass("input-group progress__card--input-text").val($inputText);
         let $editInput = $("<div class='input-group progress__card--input-text'></div>").append($(document.createElement("input")).addClass("form-control").val($inputText))
         $editedProgressCard.find("span").closest(".progress__card--text").attr("class", "progress__card--name").replaceWith($editInput)
+
+        // Grab any text that already existed
+        // TODO SANITIZE!!!
+        let $descpriptionBeforeEdit = $editedProgressCard.find("p").text();
+
+        // edit taxtarea
+        let $editTextArea = $("<div class='form-group progress__card--textarea-text'></div>").append($("<textarea class='form-control' rows='2'></textarea>").val($descpriptionBeforeEdit));
+
+
+
+        $editedProgressCard.find("p").replaceWith($editTextArea);
     })
 
+
+    // When user clicks the 'stop edit' icon - fa-times
+    $progressCardsBodies.on("click", ".fa-times-circle", function (e) {
+        // stop propagation
+        e.stopPropagation();
+
+        // reset to not edit mode
+        let $editedProgressCard = $(this).closest(".progress__card");
+
+
+        $editedProgressCard.find(".fa-times-circle").replaceWith("<i class='fas fa-trash-alt'></i>")
+
+        let $inputText = $editedProgressCard.find("input").val();
+
+
+
+        // Replace input with a span element
+        $editedProgressCard.find(".input-group.progress__card--input-text input").replaceWith($(document.createElement("span")).text($inputText))
+        $editedProgressCard.find(".input-group.progress__card--input-text").attr("class", "progress__card--text")
+
+        // Grab any text that already existed in textarea
+        let $descpriptionBeforeEdit = $editedProgressCard.find("textarea").val();
+
+        // reset to p element
+        // todo sanitize
+        $editedProgressCard.find(".form-group.progress__card--textarea-text").replaceWith($(document.createElement("p")).text($descpriptionBeforeEdit));
+
+
+
+    })
 
     // Handle deletion of card
     $progressCardsBodies.on("click", ".fa-trash-alt", function () {
