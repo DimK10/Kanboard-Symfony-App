@@ -22,9 +22,7 @@
     <list default="true" id="f44fcf20-f461-4aaa-a1b4-ceccfdfb1731" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/assets/js/kanBanBoard.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/kanBanBoard.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/styles/_progress.scss" beforeDir="false" afterPath="$PROJECT_DIR$/assets/styles/_progress.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/styles/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/assets/styles/app.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/styles/app.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/assets/styles/app.css.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/kanban_board/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/kanban_board/index.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -208,7 +206,7 @@
       <workItem from="1606148647485" duration="1045000" />
       <workItem from="1606158265430" duration="6745000" />
       <workItem from="1606240567512" duration="6103000" />
-      <workItem from="1607108497807" duration="8865000" />
+      <workItem from="1607108497807" duration="9963000" />
     </task>
     <servers />
   </component>
