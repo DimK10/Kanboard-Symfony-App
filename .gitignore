@@ -25,3 +25,6 @@ yarn-error.log
 
 /assets/styles/app.css
 /assets/styles/app.css.map
+###> lexik/jwt-authentication-bundle ###
+/config/jwt/*.pem
+###< lexik/jwt-authentication-bundle ###
