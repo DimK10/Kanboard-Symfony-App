@@ -6,6 +6,7 @@ $(function () {
 
 
 
+
     let areaForProgressCards = $('.progress__body--contents');
 
     // Handle drag and drop, and sorting the cards

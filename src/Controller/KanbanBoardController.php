@@ -2,16 +2,17 @@
 
 namespace App\Controller;
 
-use App\Entity\Progress;
+
 use App\Entity\User;
 use App\Service\ProgressService;
 use App\Service\WorkspaceService;
-use Doctrine\ORM\EntityManager;
-use Doctrine\ORM\EntityManagerInterface;
+use Lexik\Bundle\JWTAuthenticationBundle\Services\JWTTokenManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Cookie;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Contracts\HttpClient\HttpClientInterface;
 
 class KanbanBoardController extends AbstractController
 {
@@ -21,8 +22,26 @@ class KanbanBoardController extends AbstractController
      * @param ProgressService $progressService
      * @return Response
      */
-    public function index(WorkspaceService $workspaceService, ProgressService $progressService): Response
+    public function index(UserInterface $userInterface, JWTTokenManagerInterface $JWTTokenManager, WorkspaceService $workspaceService, ProgressService $progressService): Response
     {
+
+//        dd(array("token" => $JWTTokenManager->create($userInterface)));
+
+        $jwt = $JWTTokenManager->create($userInterface);
+
+        $response = new Response();
+        $cookie = new Cookie(
+            'kanboard_app',
+            $jwt,
+            time()+3600,
+            "/",
+            "127.0.0.1",
+            false,
+            true
+        );
+        $response->headers->setCookie($cookie);
+        $response->sendHeaders();
+
         $username = $this->getUser()->getUsername();
         $user = $this->getDoctrine()->getRepository(User::class)->findBy(["email" => $username])[0];
         $workspaces = $workspaceService->findAllWorkspacesForAUser($user);
@@ -34,7 +53,8 @@ class KanbanBoardController extends AbstractController
         $progresses = $progressService->findAllByIdOrderByPriority();
         return $this->render('kanban_board/index.html.twig', [
             'workspaces' => $workspaces,
-            'progresses' => $progresses
+            'progresses' => $progresses,
+            $response
         ]);
     }
 }

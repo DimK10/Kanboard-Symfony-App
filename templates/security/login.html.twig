@@ -51,7 +51,10 @@
         </div>
     </div>
 
-
+{% block javascripts%}
+    {{ parent() }}
+    {{ asset('build/js/login') }}
+{% endblock %}
 
 
 {% endblock %}
