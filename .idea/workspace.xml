@@ -20,9 +20,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f44fcf20-f461-4aaa-a1b4-ceccfdfb1731" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/packages/security.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/security.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/routes.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/routes.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -157,10 +156,6 @@
       <path value="$PROJECT_DIR$/vendor/doctrine/data-fixtures" />
       <path value="$PROJECT_DIR$/vendor/fzaninotto/faker" />
       <path value="$PROJECT_DIR$/vendor/symfony/webpack-encore-bundle" />
-      <path value="$PROJECT_DIR$/vendor/lcobucci/jwt" />
-      <path value="$PROJECT_DIR$/vendor/lcobucci/clock" />
-      <path value="$PROJECT_DIR$/vendor/lexik/jwt-authentication-bundle" />
-      <path value="$PROJECT_DIR$/vendor/namshi/jose" />
     </include_path>
   </component>
   <component name="ProjectId" id="1kFeOGYiDR1lWmw2hPHlKQ5Gw5e" />
@@ -171,16 +166,13 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/config/packages" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/public" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="php.override.implement.member.chooser.php.doc" value="NONE" />
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\Web-Dev-Workstation\Kanboard-Symfony-App\config\packages" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\laragon\www\Kanboard-App\assets" />
     </key>
@@ -190,10 +182,7 @@
       <method v="2" />
     </configuration>
   </component>
-  <component name="SpellCheckerSettings" BundledDictionaries="0" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" Dictionaries="0" CorrectionsLimit="5" DefaultDictionary="application-level" UseSingleDictionary="true" />
-  <component name="SvnConfiguration">
-    <configuration />
-  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="f44fcf20-f461-4aaa-a1b4-ceccfdfb1731" name="Default Changelist" comment="" />
@@ -212,13 +201,13 @@
       <workItem from="1606158265430" duration="6745000" />
       <workItem from="1606240567512" duration="6681000" />
       <workItem from="1606415100158" duration="241000" />
-      <workItem from="1607272129850" duration="231000" />
-      <workItem from="1607431870420" duration="958000" />
+      <workItem from="1607272129850" duration="199000" />
+      <workItem from="1607543848534" duration="179000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="2" />
+    <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -347,10 +336,9 @@
     </state>
     <state x="236" y="155" key="SettingsEditor/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1605892682113" />
     <state x="336" y="77" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1605308207919" />
-    <state x="602" y="186" width="760" height="756" key="find.popup" timestamp="1607519450065">
+    <state x="602" y="186" width="716" height="668" key="find.popup" timestamp="1605304991190">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="602" y="186" width="716" height="668" key="find.popup/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1605304991190" />
-    <state x="602" y="186" width="760" height="756" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1607519450065" />
   </component>
 </project>
