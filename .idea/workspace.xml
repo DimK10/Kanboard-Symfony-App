@@ -20,16 +20,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f44fcf20-f461-4aaa-a1b4-ceccfdfb1731" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/assets/js/login.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Service/TaskService.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/app.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/assets/js/kanBanBoard.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/kanBanBoard.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/packages/security.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/security.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/packages/lexik_jwt_authentication.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/lexik_jwt_authentication.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/CrudController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/CrudController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/KanbanBoardController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/KanbanBoardController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/SecurityController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/SecurityController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/security/login.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/security/login.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Repository/TaskRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/TaskRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/symfony.lock" beforeDir="false" afterPath="$PROJECT_DIR$/symfony.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/kanban_board/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/kanban_board/index.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,13 +52,14 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="PhpDebugGeneral" xdebug_debug_port="9001" />
   <component name="PhpServers">
     <servers>
-      <server host="kanboard-app.test" id="0b7d4640-1db0-4f7f-9c16-7a7d2fd9c052" name="apache" />
+      <server host="kanboard-symfony-app.test" id="0b7d4640-1db0-4f7f-9c16-7a7d2fd9c052" name="apache_server" />
     </servers>
   </component>
-  <component name="PhpWebServerValidation" path_to_validation_script="C:\laragon\www\Kanboard-App\public" selected_validation_type="LOCAL" web_path_to_validation_script="http://kanboard-app.test:80" />
-  <component name="PhpWorkspaceProjectConfiguration">
+  <component name="PhpWebServerValidation" path_to_validation_script="D:\Web-Dev-Workstation\Kanboard-Symfony-App\public" selected_validation_type="LOCAL" web_path_to_validation_script="http://kanboard-symfony-app.test:80" />
+  <component name="PhpWorkspaceProjectConfiguration" interpreter_name="PHP">
     <include_path>
       <path value="$PROJECT_DIR$/vendor/psr/link" />
       <path value="$PROJECT_DIR$/vendor/psr/container" />
@@ -168,6 +170,7 @@
       <path value="$PROJECT_DIR$/vendor/lcobucci/clock" />
       <path value="$PROJECT_DIR$/vendor/lexik/jwt-authentication-bundle" />
       <path value="$PROJECT_DIR$/vendor/namshi/jose" />
+      <path value="$PROJECT_DIR$/vendor/symfony/apache-pack" />
     </include_path>
   </component>
   <component name="ProjectId" id="1kFeOGYiDR1lWmw2hPHlKQ5Gw5e" />
@@ -178,10 +181,10 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/public" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../Program Files/Symfony/symfony.exe" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="php.override.implement.member.chooser.php.doc" value="NONE" />
-    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+    <property name="settings.editor.selected.configurable" value="reference.webide.settings.project.settings.php.debug" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
@@ -190,11 +193,14 @@
     </key>
   </component>
   <component name="RunManager">
-    <configuration name="apache" type="PhpWebAppRunConfigurationType" factoryName="PHP Web Application" server_name="apache">
+    <configuration name="apache" type="PhpWebAppRunConfigurationType" factoryName="PHP Web Application" server_name="apache_server">
       <method v="2" />
     </configuration>
   </component>
-  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="SpellCheckerSettings" BundledDictionaries="0" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" Dictionaries="0" CorrectionsLimit="5" DefaultDictionary="application-level" UseSingleDictionary="true" />
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="f44fcf20-f461-4aaa-a1b4-ceccfdfb1731" name="Default Changelist" comment="" />
@@ -235,14 +241,24 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="332" y="89" key="#Servers" timestamp="1605301594164">
+    <state x="843" y="168" width="1046" height="834" key="#CLI_Interpreters" timestamp="1607807572696">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="843" y="168" width="1046" height="834" key="#CLI_Interpreters/0.0.1920.1040@0.0.1920.1040" timestamp="1607807572696" />
+    <state x="573" y="134" key="#PHP" timestamp="1607807069472">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="573" y="134" key="#PHP/0.0.1920.1040@0.0.1920.1040" timestamp="1607807069472" />
+    <state x="332" y="89" key="#Servers" timestamp="1607811739693">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="332" y="89" key="#Servers/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1605301594164" />
-    <state x="397" y="176" width="1099" height="803" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1605301615997">
+    <state x="332" y="89" key="#Servers/0.0.1920.1040@0.0.1920.1040" timestamp="1607811739693" />
+    <state x="278" y="221" width="1099" height="803" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1607812101365">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="397" y="176" width="1099" height="803" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1605301615997" />
+    <state x="278" y="221" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1607812101365" />
     <state x="718" y="124" key="#com.intellij.ide.util.MemberChooser" timestamp="1605896477189">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -265,94 +281,112 @@
     </state>
     <state x="624" y="215" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1607545851336" />
     <state x="624" y="215" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1605304559692" />
-    <state x="605" y="300" width="709" height="487" key="#com.jetbrains.php.debug.validation.PhpWebServerValidationDialog#" timestamp="1605301606045">
+    <state x="605" y="300" width="762" height="647" key="#com.jetbrains.php.debug.validation.PhpWebServerValidationDialog#" timestamp="1607812085130">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="605" y="300" width="709" height="487" key="#com.jetbrains.php.debug.validation.PhpWebServerValidationDialog#/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1605301606045" />
+    <state x="605" y="300" width="762" height="647" key="#com.jetbrains.php.debug.validation.PhpWebServerValidationDialog#/0.0.1920.1040@0.0.1920.1040" timestamp="1607812085130" />
     <state x="552" y="241" key="EditFileWatcherDialog" timestamp="1605308212156">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="552" y="241" key="EditFileWatcherDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1605308212156" />
-    <state x="686" y="199" key="FileChooserDialogImpl" timestamp="1605301601213">
+    <state x="891" y="239" key="FileChooserDialogImpl" timestamp="1607808004374">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="686" y="199" key="FileChooserDialogImpl/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1605301601213" />
-    <state width="1865" height="330" key="GridCell.Tab.0.bottom" timestamp="1605903732416">
+    <state x="891" y="239" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1607808004374" />
+    <state width="902" height="330" key="GridCell.Tab.0.bottom" timestamp="1607812367023">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1865" height="330" key="GridCell.Tab.0.bottom/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1605903732416" />
-    <state width="1865" height="330" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1605311053989" />
-    <state width="1865" height="330" key="GridCell.Tab.0.center" timestamp="1605903732416">
+    <state width="902" height="330" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1607812367023" />
+    <state width="902" height="330" key="GridCell.Tab.0.center" timestamp="1607812367023">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1865" height="330" key="GridCell.Tab.0.center/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1605903732416" />
-    <state width="1865" height="330" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1605311053988" />
-    <state width="1865" height="330" key="GridCell.Tab.0.left" timestamp="1605903732416">
+    <state width="902" height="330" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1607812367023" />
+    <state width="902" height="330" key="GridCell.Tab.0.left" timestamp="1607812367022">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1865" height="330" key="GridCell.Tab.0.left/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1605903732416" />
-    <state width="1865" height="330" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1605311053988" />
-    <state width="1865" height="330" key="GridCell.Tab.0.right" timestamp="1605903732416">
+    <state width="902" height="330" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1607812367022" />
+    <state width="902" height="330" key="GridCell.Tab.0.right" timestamp="1607812367023">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1865" height="330" key="GridCell.Tab.0.right/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1605903732416" />
-    <state width="1865" height="330" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1605311053989" />
-    <state width="1865" height="330" key="GridCell.Tab.1.bottom" timestamp="1605903732417">
+    <state width="902" height="330" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1607812367023" />
+    <state width="902" height="330" key="GridCell.Tab.1.bottom" timestamp="1607812366938">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1865" height="330" key="GridCell.Tab.1.bottom/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1605903732417" />
-    <state width="1865" height="330" key="GridCell.Tab.1.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1605311053989" />
-    <state width="1865" height="330" key="GridCell.Tab.1.center" timestamp="1605903732417">
+    <state width="902" height="330" key="GridCell.Tab.1.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1607812366938" />
+    <state width="902" height="330" key="GridCell.Tab.1.center" timestamp="1607812366938">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1865" height="330" key="GridCell.Tab.1.center/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1605903732417" />
-    <state width="1865" height="330" key="GridCell.Tab.1.center/0.0.1920.1040@0.0.1920.1040" timestamp="1605311053989" />
-    <state width="1865" height="330" key="GridCell.Tab.1.left" timestamp="1605903732417">
+    <state width="902" height="330" key="GridCell.Tab.1.center/0.0.1920.1040@0.0.1920.1040" timestamp="1607812366938" />
+    <state width="902" height="330" key="GridCell.Tab.1.left" timestamp="1607812366938">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1865" height="330" key="GridCell.Tab.1.left/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1605903732417" />
-    <state width="1865" height="330" key="GridCell.Tab.1.left/0.0.1920.1040@0.0.1920.1040" timestamp="1605311053989" />
-    <state width="1865" height="330" key="GridCell.Tab.1.right" timestamp="1605903732417">
+    <state width="902" height="330" key="GridCell.Tab.1.left/0.0.1920.1040@0.0.1920.1040" timestamp="1607812366938" />
+    <state width="902" height="330" key="GridCell.Tab.1.right" timestamp="1607812366938">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1865" height="330" key="GridCell.Tab.1.right/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1605903732417" />
-    <state width="1865" height="330" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1605311053989" />
-    <state width="1865" height="330" key="GridCell.Tab.2.bottom" timestamp="1605903732417">
+    <state width="902" height="330" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1607812366938" />
+    <state width="902" height="330" key="GridCell.Tab.2.bottom" timestamp="1607812366938">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1865" height="330" key="GridCell.Tab.2.bottom/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1605903732417" />
-    <state width="1865" height="330" key="GridCell.Tab.2.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1605311053990" />
-    <state width="1865" height="330" key="GridCell.Tab.2.center" timestamp="1605903732417">
+    <state width="902" height="330" key="GridCell.Tab.2.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1607812366938" />
+    <state width="902" height="330" key="GridCell.Tab.2.center" timestamp="1607812366938">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1865" height="330" key="GridCell.Tab.2.center/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1605903732417" />
-    <state width="1865" height="330" key="GridCell.Tab.2.center/0.0.1920.1040@0.0.1920.1040" timestamp="1605311053990" />
-    <state width="1865" height="330" key="GridCell.Tab.2.left" timestamp="1605903732417">
+    <state width="902" height="330" key="GridCell.Tab.2.center/0.0.1920.1040@0.0.1920.1040" timestamp="1607812366938" />
+    <state width="902" height="330" key="GridCell.Tab.2.left" timestamp="1607812366938">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1865" height="330" key="GridCell.Tab.2.left/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1605903732417" />
-    <state width="1865" height="330" key="GridCell.Tab.2.left/0.0.1920.1040@0.0.1920.1040" timestamp="1605311053990" />
-    <state width="1865" height="330" key="GridCell.Tab.2.right" timestamp="1605903732417">
+    <state width="902" height="330" key="GridCell.Tab.2.left/0.0.1920.1040@0.0.1920.1040" timestamp="1607812366938" />
+    <state width="902" height="330" key="GridCell.Tab.2.right" timestamp="1607812366938">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1865" height="330" key="GridCell.Tab.2.right/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1605903732417" />
-    <state width="1865" height="330" key="GridCell.Tab.2.right/0.0.1920.1040@0.0.1920.1040" timestamp="1605311053990" />
-    <state x="675" y="182" key="NewPhpClassDialog" timestamp="1605896419647">
+    <state width="902" height="330" key="GridCell.Tab.2.right/0.0.1920.1040@0.0.1920.1040" timestamp="1607812366938" />
+    <state x="675" y="182" key="NewPhpClassDialog" timestamp="1607802212051">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="675" y="182" key="NewPhpClassDialog/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1605896419647" />
+    <state x="675" y="182" key="NewPhpClassDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1607802212051" />
     <state x="748" y="424" key="NewPhpFileDialog" timestamp="1605730495017">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="748" y="424" key="NewPhpFileDialog/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1605730495017" />
-    <state x="236" y="155" key="SettingsEditor" timestamp="1605892682113">
+    <state x="533" y="68" key="SettingsEditor" timestamp="1607812523183">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="236" y="155" key="SettingsEditor/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1605892682113" />
-    <state x="336" y="77" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1605308207919" />
+    <state x="533" y="68" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1607812523183" />
+    <state x="180" y="0" key="com.jetbrains.php.config.phpInfo.PhpInfo.PhpInfoDialog" timestamp="1607807065242">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="180" y="0" key="com.jetbrains.php.config.phpInfo.PhpInfo.PhpInfoDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1607807065242" />
     <state x="602" y="186" width="716" height="668" key="find.popup" timestamp="1605304991190">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="602" y="186" width="716" height="668" key="find.popup/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1605304991190" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/src/Controller/CrudController.php</url>
+          <line>26</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

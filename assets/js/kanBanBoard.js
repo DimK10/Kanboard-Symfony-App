@@ -6,7 +6,6 @@ $(function () {
 
 
 
-
     let areaForProgressCards = $('.progress__body--contents');
 
     // Handle drag and drop, and sorting the cards
@@ -71,12 +70,10 @@ $(function () {
     })
 
     
-
-
-    
     let $progressCardsBodies = $(".progress__body--contents");
 
     // Accept new card with data and initialize card
+    //  CREATE NEW TASK
     $progressCardsBodies.on("click", ".fa-check", function (e) {
         e.stopPropagation();
 
@@ -84,13 +81,19 @@ $(function () {
 
 
 
-        // TODO -SANITIZE
+        // TODO - SANITIZE
         let $inputText = $initializedProgressCard.find("input").val();
 
         // Grab any text that already existed in textarea
         let $descpriptionBeforeInitialization = $initializedProgressCard.find("textarea").val();
 
         if ($inputText !== "" && $descpriptionBeforeInitialization !== "") {
+
+            // continue with the creation process
+            let $color = $initializedProgressCard.css("background-color");
+            let $progressId = $initializedProgressCard.closest(".progress__body").data("id");
+            let $workspaceId = $(".main-page__container").find(".workspace__title").data("id");
+            let $priority = $(".progress__body--contents.connected-sortable .progress__card").length;
 
             // Replace check icon with edit icon
             $initializedProgressCard.find(".fa-check").replaceWith("<i class='fas fa-pencil-alt'></i>")
@@ -107,6 +110,22 @@ $(function () {
             // reset to p element
             // todo sanitize
             $initializedProgressCard.find(".form-group.progress__card--textarea-text").replaceWith($(document.createElement("p")).text($descpriptionBeforeInitialization));
+
+
+            // Create JSON request body
+            let $newTask = {
+                name: $inputText,
+                description: $descpriptionBeforeInitialization,
+                color: $color,
+                progress: $progressId,
+                workspace: $workspaceId,
+                priority: $priority
+            }
+
+            // Send data
+            $.post("http://kanboard-symfony-app.test/api/task/create", $newTask, function (result) {
+                console.log(result);
+            });
 
         } else {
             // User is trying to create an empty card - warn him

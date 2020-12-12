@@ -35,7 +35,7 @@ class KanbanBoardController extends AbstractController
             $jwt,
             time()+3600,
             "/",
-            "127.0.0.1",
+            "kanboard-symfony-app.test",
             false,
             true
         );
