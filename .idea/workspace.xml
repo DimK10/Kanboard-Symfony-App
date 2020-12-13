@@ -20,24 +20,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f44fcf20-f461-4aaa-a1b4-ceccfdfb1731" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/js/constants.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/app.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/assets/js/kanBanBoard.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/kanBanBoard.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/Version20201113221208.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/Version20201120180537.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/Version20201120181530.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/Version20201209130419.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/styles/_login.scss" beforeDir="false" afterPath="$PROJECT_DIR$/assets/styles/_login.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/styles/app.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/styles/app.css.map" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/CrudController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/CrudController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DataFixtures/ProgressFixtures.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/DataFixtures/ProgressFixtures.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Progress.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Progress.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Task.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Task.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Workspace.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Workspace.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/ProgressRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/ProgressRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/WorkspaceRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/WorkspaceRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Service/ProgressService.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Service/ProgressService.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Service/TaskService.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Service/TaskService.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Service/WorkspaceService.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Service/WorkspaceService.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/kanban_board/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/kanban_board/index.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -54,6 +45,7 @@
       <list>
         <option value="composer.json" />
         <option value="JavaScript File" />
+        <option value="CSS File" />
       </list>
     </option>
   </component>
@@ -189,6 +181,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../../Program Files/Symfony/symfony.exe" />
+    <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="php.override.implement.member.chooser.php.doc" value="NONE" />
     <property name="settings.editor.selected.configurable" value="reference.webide.settings.project.settings.php.debug" />
@@ -230,7 +223,7 @@
       <workItem from="1607543848534" duration="5594000" />
       <workItem from="1607549645098" duration="3272000" />
       <workItem from="1607853607137" duration="4792000" />
-      <workItem from="1607859479175" duration="4043000" />
+      <workItem from="1607859479175" duration="9579000" />
     </task>
     <servers />
   </component>
@@ -260,16 +253,6 @@
             <option name="methodName" value="login" />
           </properties>
           <option name="timeStamp" value="6" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="php">
-          <url>file://$PROJECT_DIR$/src/Controller/CrudController.php</url>
-          <line>58</line>
-          <option name="timeStamp" value="11" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="php">
-          <url>file://$PROJECT_DIR$/src/Controller/CrudController.php</url>
-          <line>33</line>
-          <option name="timeStamp" value="13" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

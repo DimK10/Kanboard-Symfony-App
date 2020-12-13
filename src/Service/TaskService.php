@@ -7,6 +7,7 @@ namespace App\Service;
 use App\Entity\Task;
 use App\Repository\TaskRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use Doctrine\ORM\ORMException;
 
 class TaskService
 {
@@ -35,5 +36,21 @@ class TaskService
     public function persist(Task $task) {
         $this->entityManager->persist($task);
         $this->entityManager->flush();
+
+        return $task->getId();
+    }
+
+    public function delete(int $id) {
+
+        try {
+            $taskTodelete = $this->entityManager->getReference(Task::class, $id);
+            $this->entityManager->remove($taskTodelete);
+            $this->entityManager->flush();
+            return $taskTodelete;
+        } catch (ORMException $e) {
+            dump($e);
+
+        }
+        return null;
     }
 }

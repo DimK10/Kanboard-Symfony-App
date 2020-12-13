@@ -56,8 +56,26 @@ class CrudController extends AbstractController
         $newTask->setPriority($priority);
 
         // persist to db
-        $taskService->persist($newTask);
+        $idOfTask = $taskService->persist($newTask);
 
-        return new JsonResponse('The task was created successfully', 201);
+        return new JsonResponse([
+            "message" => "The task was created successfully",
+            "id" => $idOfTask
+        ], 201);
+    }
+
+    /**
+     * @Route("/api/task/delete/{id}", name="delete_task", methods={"POST"})
+     * @param TaskService $taskService
+     * @return JsonResponse
+     */
+    public function deleteTask($id, TaskService $taskService) {
+        $taskDeleted = $taskService->delete($id);
+
+        if ($taskDeleted != null) {
+            return new JsonResponse(array("message" =>"Task deleted successfully!"), 200);
+        }
+
+        return new JsonResponse(array("message" => "Task not found"), 404);
     }
 }

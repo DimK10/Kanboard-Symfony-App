@@ -28,8 +28,8 @@
                                     <i class="fas fa-plus fa-2x"></i>
                                 </div>
                                 <div class="progress__body--contents connected-sortable">
-                                    {% for task in progress.tasks %}
-                                        <div class="progress__card" style="background-color: {{ task.color }}">
+                                    {% for task in progress.tasks|sort %}
+                                        <div class="progress__card" data-id="{{ task.id }}" style="background-color: {{ task.color }}">
                                             <div class="progress__card--name">
                                                 <div class="progress__card--text">
                                                     <span>{{ task.name }}</span>

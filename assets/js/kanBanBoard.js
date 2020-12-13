@@ -1,4 +1,5 @@
 import Sortable from 'sortablejs';
+import { $urlToApi } from "./constants";
 
 $(function () {
 
@@ -46,7 +47,7 @@ $(function () {
         console.log($areaForNewProgressCard);
 
         $areaForNewProgressCard.append(
-            "<div class=\"progress__card\" style=\"background-color: " + $color + "\">\n" +
+            "<div class=\"progress__card\" data-id=\"\" style=\"background-color: " + $color + "\">\n" +
             "                                        <div class=\"progress__card--name\">\n" +
             "                                                <div class='input-group progress__card--input-text'>\n" +
             "                                                    <input type='text' placeholder='Add a Title' class='form-control'>\n" +
@@ -125,9 +126,26 @@ $(function () {
             console.log($newTask)
 
             // Send data
-            $.post("http://kanboard-symfony-app.test/api/task/create", $newTask, function (result) {
-                console.log(result);
-            });
+            $.post($urlToApi + "/task/create", $newTask)
+                .done(function (result) {
+                    result = JSON.stringify(result);
+                    result = JSON.parse(result)
+                    console.log(result)
+
+                    // set data-id to new progress card
+
+                    let $newCard = $('.progress__card')
+                        .filter(function(){
+                            return !$(this).attr('data-id');
+                        });
+
+                    console.log($newCard)
+
+                    $newCard.attr("data-id", result.id)
+                })
+                .fail(function (xhr, status, error) {
+                    console.error(error);
+                });
 
         } else {
             // User is trying to create an empty card - warn him
@@ -221,6 +239,22 @@ $(function () {
 
     // Handle deletion of card
     $progressCardsBodies.on("click", ".fa-trash-alt", function () {
+
+        // Get id of task card
+        let $progressCardToDelete = $(this).closest(".progress__card");
+
+        let id = $progressCardToDelete.data("id");
+
+        $.post($urlToApi + `/task/delete/${id}`)
+            .done(function (result) {
+                result = JSON.stringify(result);
+                console.log(result.message);
+            })
+            .fail(function (xhr, status, error) {
+                console.error(error);
+            })
+
+        // Remove card from ui
         $(this).closest(".progress__card").remove();
     })
 
