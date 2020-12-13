@@ -27,7 +27,7 @@ class WorkspaceRepository extends ServiceEntityRepository
     public function findByAllWorkspacesForSpecificUser(int $userId)
     {
         return $this->createQueryBuilder('w')
-            ->leftJoin('w.user_id', 'u')
+            ->leftJoin('w.users', 'u')
             ->andWhere('u.id = :userId')
             ->setParameter('userId', $userId)
             ->orderBy('w.id', 'ASC')

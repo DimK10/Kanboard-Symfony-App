@@ -122,6 +122,8 @@ $(function () {
                 priority: $priority
             }
 
+            console.log($newTask)
+
             // Send data
             $.post("http://kanboard-symfony-app.test/api/task/create", $newTask, function (result) {
                 console.log(result);

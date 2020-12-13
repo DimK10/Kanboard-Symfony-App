@@ -23,6 +23,10 @@ class WorkspaceService
         $this->workspaceRepository = $workspaceRepository;
     }
 
+    public function findById(int $id) {
+        return $this->workspaceRepository->find($id);
+    }
+
     public function findAllWorkspacesForAUser(User $user)
     {
         return $this->workspaceRepository->findByAllWorkspacesForSpecificUser($user->getId());

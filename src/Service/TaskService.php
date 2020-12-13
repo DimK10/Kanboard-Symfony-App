@@ -34,5 +34,6 @@ class TaskService
 
     public function persist(Task $task) {
         $this->entityManager->persist($task);
+        $this->entityManager->flush();
     }
 }

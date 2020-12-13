@@ -30,26 +30,26 @@ class Workspace
     private $description;
 
     /**
-     * @ORM\ManyToMany(targetEntity=User::class, mappedBy="workspace_id")
+     * @ORM\ManyToMany(targetEntity=User::class, mappedBy="workspaces")
      * @ORM\JoinColumn(nullable=true)
      */
-    private $user_id;
+    private $users;
 
     /**
-     * @ORM\OneToMany(targetEntity=Task::class, mappedBy="workspace_id")
+     * @ORM\OneToMany(targetEntity=Task::class, mappedBy="workspace")
      */
-    private $task_id;
+    private $tasks;
 
     /**
-     * @ORM\OneToMany(targetEntity=Progress::class, mappedBy="workspace_id")
+     * @ORM\OneToMany(targetEntity=Progress::class, mappedBy="workspace")
      */
-    private $progress_id;
+    private $progresses;
 
     public function __construct()
     {
-        $this->user_id = new ArrayCollection();
-        $this->task_id = new ArrayCollection();
-        $this->progress_id = new ArrayCollection();
+        $this->users = new ArrayCollection();
+        $this->tasks = new ArrayCollection();
+        $this->progresses = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -84,15 +84,15 @@ class Workspace
     /**
      * @return Collection|User[]
      */
-    public function getUserId(): Collection
+    public function getUsers(): Collection
     {
-        return $this->user_id;
+        return $this->users;
     }
 
     public function addUserId(User $userId): self
     {
-        if (!$this->user_id->contains($userId)) {
-            $this->user_id[] = $userId;
+        if (!$this->users->contains($userId)) {
+            $this->users[] = $userId;
             $userId->addWorkspaceId($this);
         }
 
@@ -101,7 +101,7 @@ class Workspace
 
     public function removeUserId(User $userId): self
     {
-        if ($this->user_id->removeElement($userId)) {
+        if ($this->users->removeElement($userId)) {
             $userId->removeWorkspaceId($this);
         }
 
@@ -111,16 +111,16 @@ class Workspace
     /**
      * @return Collection|Task[]
      */
-    public function getTaskId(): Collection
+    public function getTasks(): Collection
     {
-        return $this->task_id;
+        return $this->tasks;
     }
 
     public function addTaskId(?Task $taskId): self
     {
-        if ($taskId != null && !$this->task_id->contains($taskId)) {
-            $this->task_id[] = $taskId;
-            $taskId->setWorkspaceId($this);
+        if ($taskId != null && !$this->tasks->contains($taskId)) {
+            $this->tasks[] = $taskId;
+            $taskId->setWorkspace($this);
         }
 
         return $this;
@@ -128,10 +128,10 @@ class Workspace
 
     public function removeTaskId(Task $taskId): self
     {
-        if ($this->task_id->removeElement($taskId)) {
+        if ($this->tasks->removeElement($taskId)) {
             // set the owning side to null (unless already changed)
-            if ($taskId->getWorkspaceId() === $this) {
-                $taskId->setWorkspaceId(null);
+            if ($taskId->getWorkspace() === $this) {
+                $taskId->setWorkspace(null);
             }
         }
 
@@ -141,16 +141,16 @@ class Workspace
     /**
      * @return Collection|Progress[]
      */
-    public function getProgressId(): Collection
+    public function getProgresses(): Collection
     {
-        return $this->progress_id;
+        return $this->progresses;
     }
 
     public function addProgressId(Progress $progressId): self
     {
-        if (!$this->progress_id->contains($progressId)) {
-            $this->progress_id[] = $progressId;
-            $progressId->setWorkspaceId($this);
+        if (!$this->progresses->contains($progressId)) {
+            $this->progresses[] = $progressId;
+            $progressId->setWorkspace($this);
         }
 
         return $this;
@@ -158,10 +158,10 @@ class Workspace
 
     public function removeProgressId(Progress $progressId): self
     {
-        if ($this->progress_id->removeElement($progressId)) {
+        if ($this->progresses->removeElement($progressId)) {
             // set the owning side to null (unless already changed)
-            if ($progressId->getWorkspaceId() === $this) {
-                $progressId->setWorkspaceId(null);
+            if ($progressId->getWorkspace() === $this) {
+                $progressId->setWorkspace(null);
             }
         }
 

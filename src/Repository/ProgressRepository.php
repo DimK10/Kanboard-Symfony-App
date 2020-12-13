@@ -26,6 +26,8 @@ class ProgressRepository extends ServiceEntityRepository
     public function findByIdOrderByPriority()
     {
         return $this->createQueryBuilder('p')
+            ->addSelect("t")
+            ->leftJoin('p.tasks', 't')
             ->orderBy('p.priority', 'DESC')
             ->getQuery()
             ->getResult()

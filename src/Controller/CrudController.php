@@ -5,7 +5,9 @@ namespace App\Controller;
 use App\Entity\Progress;
 use App\Entity\Task;
 use App\Entity\Workspace;
+use App\Service\ProgressService;
 use App\Service\TaskService;
+use App\Service\WorkspaceService;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -20,21 +22,25 @@ class CrudController extends AbstractController
      * @param TaskService $taskService
      * @return JsonResponse
      */
-    public function createTask(TaskService $taskService, Request $request, SerializerInterface $serializer): JsonResponse
+    public function createTask(TaskService $taskService, Request $request, ProgressService $progressService, WorkspaceService  $workspaceService): JsonResponse
     {
 
-        // Get data from the JSON request body
+        // Get data from the formData request body
         $name = $request->request->get('name');
         $description = $request->request->get("description");
         $color = $request->request->get("color");
 
         // Get progress related with the new task
-        $progress = $request->request->get("progress");
+        $progressId =(int) $request->request->get("progress");
+
+        $progress = $progressService->findById($progressId);
 
         // Get workspace related with the new task
-        $workspace = $request->request->get("workspace");
+        $workspaceId =(int) $request->request->get("workspace");
 
-        $priority = $request->request->get("priority");
+        $workspace = $workspaceService->findById($workspaceId);
+
+        $priority =(int) $request->request->get("priority");
 
 
         // Create new Task and persist
@@ -44,14 +50,14 @@ class CrudController extends AbstractController
         $newTask->setDescription($description);
         $newTask->setColor($color);
         /** @var Progress $progress */
-        $newTask->setProgressId($progress);
+        $newTask->setProgress($progress);
         /** @var Workspace $workspace */
-        $newTask->setWorkspaceId($workspace);
+        $newTask->setWorkspace($workspace);
         $newTask->setPriority($priority);
 
         // persist to db
         $taskService->persist($newTask);
 
-        return new JsonResponse($newTask);
+        return new JsonResponse('The task was created successfully', 201);
     }
 }

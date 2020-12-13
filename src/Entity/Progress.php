@@ -25,14 +25,14 @@ class Progress
     private $description;
 
     /**
-     * @ORM\OneToMany(targetEntity=Task::class, mappedBy="progress_id")
+     * @ORM\OneToMany(targetEntity=Task::class, mappedBy="progress")
      */
-    private $task_id;
+    private $tasks;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Workspace::class, inversedBy="progress_id")
+     * @ORM\ManyToOne(targetEntity=Workspace::class, inversedBy="progresses")
      */
-    private $workspace_id;
+    private $workspace;
 
     /**
      * @ORM\Column(type="string", length=7)
@@ -46,7 +46,7 @@ class Progress
 
     public function __construct()
     {
-        $this->task_id = new ArrayCollection();
+        $this->tasks = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -69,16 +69,16 @@ class Progress
     /**
      * @return Collection|Task[]
      */
-    public function getTaskId(): Collection
+    public function getTasks(): Collection
     {
-        return $this->task_id;
+        return $this->tasks;
     }
 
     public function addTaskId(Task $taskId): self
     {
-        if (!$this->task_id->contains($taskId)) {
-            $this->task_id[] = $taskId;
-            $taskId->setProgressId($this);
+        if (!$this->tasks->contains($taskId)) {
+            $this->tasks[] = $taskId;
+            $taskId->setProgress($this);
         }
 
         return $this;
@@ -86,24 +86,24 @@ class Progress
 
     public function removeTaskId(Task $taskId): self
     {
-        if ($this->task_id->removeElement($taskId)) {
+        if ($this->tasks->removeElement($taskId)) {
             // set the owning side to null (unless already changed)
-            if ($taskId->getProgressId() === $this) {
-                $taskId->setProgressId(null);
+            if ($taskId->getProgress() === $this) {
+                $taskId->setProgress(null);
             }
         }
 
         return $this;
     }
 
-    public function getWorkspaceId(): ?Workspace
+    public function getWorkspace(): ?Workspace
     {
-        return $this->workspace_id;
+        return $this->workspace;
     }
 
-    public function setWorkspaceId(?Workspace $workspace_id): self
+    public function setWorkspace(?Workspace $workspace): self
     {
-        $this->workspace_id = $workspace_id;
+        $this->workspace = $workspace;
 
         return $this;
     }

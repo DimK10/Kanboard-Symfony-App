@@ -37,10 +37,10 @@ class User implements UserInterface
     private $password;
 
     /**
-     * @ORM\ManyToMany(targetEntity=Workspace::class, inversedBy="user_id")
+     * @ORM\ManyToMany(targetEntity=Workspace::class, inversedBy="users")
      * @ORM\JoinColumn(nullable=true)
      */
-    private $workspace_id;
+    private $workspaces;
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -54,7 +54,7 @@ class User implements UserInterface
 
     public function __construct()
     {
-        $this->workspace_id = new ArrayCollection();
+        $this->workspaces = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -138,15 +138,15 @@ class User implements UserInterface
     /**
      * @return Collection|Workspace[]
      */
-    public function getWorkspaceId(): Collection
+    public function getWorkspaces(): Collection
     {
-        return $this->workspace_id;
+        return $this->workspaces;
     }
 
     public function addWorkspaceId(?Workspace $workspaceId): self
     {
-        if ($workspaceId != null && !$this->workspace_id->contains($workspaceId)) {
-            $this->workspace_id[] = $workspaceId;
+        if ($workspaceId != null && !$this->workspaces->contains($workspaceId)) {
+            $this->workspaces[] = $workspaceId;
         }
 
         return $this;
@@ -154,7 +154,7 @@ class User implements UserInterface
 
     public function removeWorkspaceId(Workspace $workspaceId): self
     {
-        $this->workspace_id->removeElement($workspaceId);
+        $this->workspaces->removeElement($workspaceId);
 
         return $this;
     }

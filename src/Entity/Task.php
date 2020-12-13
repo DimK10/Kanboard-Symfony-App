@@ -28,21 +28,21 @@ class Task
     private $description;
 
     /**
-     * @ORM\Column(type="string", length=7)
+     * @ORM\Column(type="string", length=16)
      */
     private $color;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Progress::class, inversedBy="task_id")
+     * @ORM\ManyToOne(targetEntity=Progress::class, inversedBy="tasks")
      * @ORM\JoinColumn(nullable=true)
      */
-    private $progress_id;
+    private $progress;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Workspace::class, inversedBy="task_id")
+     * @ORM\ManyToOne(targetEntity=Workspace::class, inversedBy="tasks")
      * @ORM\JoinColumn(nullable=true)
      */
-    private $workspace_id;
+    private $workspace;
 
     /**
      * @ORM\Column(type="smallint")
@@ -90,26 +90,26 @@ class Task
         return $this;
     }
 
-    public function getProgressId(): ?Progress
+    public function getProgress(): ?Progress
     {
-        return $this->progress_id;
+        return $this->progress;
     }
 
-    public function setProgressId(?Progress $progress_id): self
+    public function setProgress(?Progress $progress): self
     {
-        $this->progress_id = $progress_id;
+        $this->progress = $progress;
 
         return $this;
     }
 
-    public function getWorkspaceId(): ?Workspace
+    public function getWorkspace(): ?Workspace
     {
-        return $this->workspace_id;
+        return $this->workspace;
     }
 
-    public function setWorkspaceId(?Workspace $workspace_id): self
+    public function setWorkspace(?Workspace $workspace): self
     {
-        $this->workspace_id = $workspace_id;
+        $this->workspace = $workspace;
 
         return $this;
     }

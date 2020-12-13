@@ -37,7 +37,7 @@ class ProgressFixtures extends BaseFixture
                     break;
             }
 
-            $progress->setWorkspaceId(null);
+            $progress->setWorkspace(null);
 
             return $progress;
 
