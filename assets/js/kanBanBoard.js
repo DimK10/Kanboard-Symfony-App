@@ -123,8 +123,6 @@ $(function () {
                 priority: $priority
             }
 
-            console.log($newTask)
-
             // Send data
             $.post($urlToApi + "/task/create", $newTask)
                 .done(function (result) {
@@ -151,24 +149,16 @@ $(function () {
             // User is trying to create an empty card - warn him
             $initializedProgressCard.find('#tooltip').show().animate({ opacity: 1 }, 500);
         }
-
-
-
-
-
     })
 
-    // Update a card with new data 
+    //Start of Update a card with new data
     $progressCardsBodies.on("click", ".fa-pencil-alt", function(e) {
         e.stopPropagation();
-
-
-
 
         // Get the values from the progress__card
         let $editedProgressCard = $(this).closest(".progress__card");
 
-        $editedProgressCard.find(".fa-pencil-alt").replaceWith(" <i class='fa fa-check'></i>")
+        $editedProgressCard.find(".fa-pencil-alt").replaceWith(" <i class='far fa-check-circle'></i>")
 
         // Change delete icon to stop edit
         $editedProgressCard.find(".fa-trash-alt").replaceWith("<i class='far fa-times-circle'></i>")
@@ -193,6 +183,58 @@ $(function () {
         $editedProgressCard.find("p").replaceWith($editTextArea);
     })
 
+    // Update card with ajax request
+    $progressCardsBodies.on("click", ".fa-check-circle", function (e) {
+        e.stopPropagation();
+
+        // Get id of task card
+        let $progressCardToUpdate = $(this).closest(".progress__card");
+
+        let id = $progressCardToUpdate.data("id");
+
+        let $editInput = $progressCardToUpdate.find("input.form-control").val();
+
+        let $editTextArea = $progressCardToUpdate.find("textarea.form-control").val();
+
+
+        if ($editInput !== "" && $editTextArea !== null) {
+
+            let $color = $progressCardToUpdate.css("background-color");
+            let $progressId = $progressCardToUpdate.closest(".progress__body").data("id");
+            let $workspaceId = $(".main-page__container").find(".workspace__title").data("id");
+            let $priority = $progressCardToUpdate.index() + 1;
+
+            let $updatedTask = {
+                name: $editInput,
+                description: $editTextArea,
+                color: $color,
+                progress: $progressId,
+                workspace: $workspaceId,
+                priority: $priority
+            }
+
+            console.log(JSON.stringify($updatedTask))
+
+            // $.ajax({
+            //     url: $urlToApi + `/task/update/${id}`,
+            //     type: 'PUT',
+            //     contentType: 'application/json',
+            //     data: JSON.stringify($updatedTask),
+            // })
+            // .done(function (result) {
+            //     console.log(result);
+            // })
+            // .fail(function (xhr, status, error) {
+            //     console.error(error);
+            // });
+        }else {
+            // User is trying to create an empty card - warn him
+            $progressCardToUpdate.find('#tooltip').show().animate({ opacity: 1 }, 500);
+        }
+
+
+
+    })
 
     // When user clicks the 'stop edit' icon - fa-times
     $progressCardsBodies.on("click", ".fa-times-circle", function (e) {
