@@ -16,12 +16,51 @@ $(function () {
                 group: 'shared',
                 animation: 150,
                 onEnd: function (e) {
+
+                    console.log($(e))
+
+                    // Get Title and description for the update in position
+                    let id = $(e.item).data("id");
+                    let $cardTitle = $(e.item).find(".progress__card--text span").text();
+                    let $cardDescription = $(e.item).find(".progress__card--description p").text();
+
                     // Change color when dropped to that column
                     let $parentColumn = $(e.to).parent();
                     let $columnTitleBackgroundColor = $parentColumn.find(".progress__body--title").css("background-color");
 
                     // Set the background color to card
                     $(e.item).css("background-color", $columnTitleBackgroundColor);
+
+                    // Get progress id, priority and workspace
+                    let $progressId = $parentColumn.data("id");
+                    let $priority = $(e.item).index() + 1;
+                    let $workspaceId = $(".main-page__container").find(".workspace__title").data("id");
+
+
+                    let $updatedTask = {
+                        name: $cardTitle,
+                        description: $cardDescription,
+                        color: $columnTitleBackgroundColor,
+                        progress: $progressId,
+                        workspace: $workspaceId,
+                        priority: $priority
+                    }
+
+                    // Request to update db
+                    // TODO - MAKE A DIFFERENT ENDPOINT THAT WILL ALSO ACCEPT THE PRIORITIES OF THE OTHER CARDS TO UPDATE DB
+
+                    $.ajax({
+                        url: $urlToApi + `/task/update/${id}`,
+                        type: 'PUT',
+                        contentType: 'application/json',
+                        data: JSON.stringify($updatedTask),
+                    })
+                        .done(function (result) {
+                            console.log(result);
+                        })
+                        .fail(function (xhr, status, error) {
+                            console.error(error);
+                        });
                 }
         })
     }
@@ -213,20 +252,35 @@ $(function () {
                 priority: $priority
             }
 
-            console.log(JSON.stringify($updatedTask))
+            let $checkIcon = $(this);
 
-            // $.ajax({
-            //     url: $urlToApi + `/task/update/${id}`,
-            //     type: 'PUT',
-            //     contentType: 'application/json',
-            //     data: JSON.stringify($updatedTask),
-            // })
-            // .done(function (result) {
-            //     console.log(result);
-            // })
-            // .fail(function (xhr, status, error) {
-            //     console.error(error);
-            // });
+            // console.log(JSON.stringify($updatedTask))
+
+            $.ajax({
+                url: $urlToApi + `/task/update/${id}`,
+                type: 'PUT',
+                contentType: 'application/json',
+                data: JSON.stringify($updatedTask),
+            })
+            .done(function (result) {
+                console.log(result);
+
+                $checkIcon.replaceWith("<i class=\"fas fa-pencil-alt\"></i>")
+                $progressCardToUpdate.find(".fa-times-circle").replaceWith("<i class=\"fas fa-trash-alt\"></i>")
+
+                // Replace input with a span element
+                $progressCardToUpdate.find(".input-group.progress__card--input-text input").replaceWith($(document.createElement("span")).text($editInput))
+                $progressCardToUpdate.find(".input-group.progress__card--input-text").attr("class", "progress__card--text")
+
+
+
+                // reset to p element
+                // todo sanitize
+                $progressCardToUpdate.find(".form-group.progress__card--textarea-text").replaceWith($(document.createElement("p")).text($editTextArea));
+            })
+            .fail(function (xhr, status, error) {
+                console.error(error);
+            });
         }else {
             // User is trying to create an empty card - warn him
             $progressCardToUpdate.find('#tooltip').show().animate({ opacity: 1 }, 500);

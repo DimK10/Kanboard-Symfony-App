@@ -94,7 +94,7 @@ class CrudController extends AbstractController
     public function updateTask($id, Request $request, TaskService $taskService): JsonResponse
     {
         /** @var array $data */
-        $data = json_decode($request->getContent());
+        $data = json_decode($request->getContent(), true);
 
         $updatedTaskFromUser = new Task();
 

@@ -22,9 +22,7 @@
     <list default="true" id="f44fcf20-f461-4aaa-a1b4-ceccfdfb1731" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/assets/js/kanBanBoard.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/kanBanBoard.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/CrudController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/CrudController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Service/TaskService.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Service/TaskService.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -219,7 +217,8 @@
       <workItem from="1607549645098" duration="3272000" />
       <workItem from="1607853607137" duration="4792000" />
       <workItem from="1607859479175" duration="10271000" />
-      <workItem from="1607972899615" duration="4249000" />
+      <workItem from="1607972899615" duration="5966000" />
+      <workItem from="1608147299456" duration="3894000" />
     </task>
     <servers />
   </component>
@@ -249,11 +248,6 @@
             <option name="methodName" value="login" />
           </properties>
           <option name="timeStamp" value="6" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="php">
-          <url>file://$PROJECT_DIR$/src/Controller/CrudController.php</url>
-          <line>101</line>
-          <option name="timeStamp" value="7" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
