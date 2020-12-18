@@ -21,8 +21,8 @@ $(function () {
 
                     // Get Title and description for the update in position
                     let id = $(e.item).data("id");
-                    let $cardTitle = $(e.item).find(".progress__card--text span").text();
-                    let $cardDescription = $(e.item).find(".progress__card--description p").text();
+                    // let $cardTitle = $(e.item).find(".progress__card--text span").text();
+                    // let $cardDescription = $(e.item).find(".progress__card--description p").text();
 
                     // Change color when dropped to that column
                     let $parentColumn = $(e.to).parent();
@@ -32,28 +32,29 @@ $(function () {
                     $(e.item).css("background-color", $columnTitleBackgroundColor);
 
                     // Get progress id, priority and workspace
-                    let $progressId = $parentColumn.data("id");
-                    let $priority = $(e.item).index() + 1;
-                    let $workspaceId = $(".main-page__container").find(".workspace__title").data("id");
+                    let $fromProgressId = $(e.from).parent().data("id");
+                    let $toProgressId = $parentColumn.data("id");
+                    let $priorityFromProgress = $(e.clone).data("id");
+                    console.log($priorityFromProgress)
+                    let $priorityToProgress = $(e.item).index() + 1;
 
 
-                    let $updatedTask = {
-                        name: $cardTitle,
-                        description: $cardDescription,
+                    let $data = {
                         color: $columnTitleBackgroundColor,
-                        progress: $progressId,
-                        workspace: $workspaceId,
-                        priority: $priority
+                        fromProgressId: $fromProgressId,
+                        priorityFrom: $priorityFromProgress,
+                        toProgressId: $toProgressId,
+                        priorityTo: $priorityToProgress
                     }
 
                     // Request to update db
                     // TODO - MAKE A DIFFERENT ENDPOINT THAT WILL ALSO ACCEPT THE PRIORITIES OF THE OTHER CARDS TO UPDATE DB
 
                     $.ajax({
-                        url: $urlToApi + `/task/update/${id}`,
+                        url: $urlToApi + `/task/position/update/${id}`,
                         type: 'PUT',
                         contentType: 'application/json',
-                        data: JSON.stringify($updatedTask),
+                        data: JSON.stringify($data),
                     })
                         .done(function (result) {
                             console.log(result);

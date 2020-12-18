@@ -23,6 +23,9 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/assets/js/kanBanBoard.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/kanBanBoard.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/CrudController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/CrudController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Repository/TaskRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/TaskRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Service/TaskService.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Service/TaskService.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/kanban_board/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/kanban_board/index.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -218,7 +221,8 @@
       <workItem from="1607853607137" duration="4792000" />
       <workItem from="1607859479175" duration="10271000" />
       <workItem from="1607972899615" duration="5966000" />
-      <workItem from="1608147299456" duration="3894000" />
+      <workItem from="1608147299456" duration="4201000" />
+      <workItem from="1608305135556" duration="5651000" />
     </task>
     <servers />
   </component>

@@ -20,7 +20,7 @@ class TaskRepository extends ServiceEntityRepository
     }
 
      /**
-      * @return Task Returns an array of Task objects
+      * @return Task Returns a Task object
       */
 
     public function findLastTaskWithTheLeastPriority()
@@ -31,6 +31,46 @@ class TaskRepository extends ServiceEntityRepository
             ->getQuery()
             ->getResult()
         ;
+    }
+
+    /**
+     * @param int $taskId
+     * @param int $progressId
+     * @return Task[] Returns an array of Task objects
+     */
+
+    public function findAllTasksWithoutTaskThatWasMoved(int $taskId, int $progressId): array
+    {
+        return $this->createQueryBuilder('t')
+            ->setParameter(":taskId", $taskId)
+            ->setParameter(":progressId", $progressId)
+            ->andWhere("t.progress = :progressId")
+            ->andWhere("t.id != :taskId")
+            ->orderBy("t.priority", "ASC")
+            ->getQuery()
+            ->getResult()
+            ;
+    }
+
+    /**
+     * @param int $taskId
+     * @param int $priorityNum
+     * @param int $progressId
+     * @return Task[] Returns an array of Task objects
+     */
+
+    public function findAllTasksThatPriorityIsGeaterThanTheNumGiven(int $taskId, int $priorityNum, int $progressId): array
+    {
+        return $this->createQueryBuilder('t')
+            ->setParameter(":taskId", $taskId)
+            ->setParameter(":priorityNum", $priorityNum)
+            ->setParameter(":progressId", $progressId)
+            ->andWhere("t.priority >= :priorityNum")
+            ->andWhere("t.progress = :progressId")
+            ->andWhere("t.id != :taskId")
+            ->getQuery()
+            ->getResult()
+            ;
     }
 
 

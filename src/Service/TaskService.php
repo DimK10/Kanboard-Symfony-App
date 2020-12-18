@@ -81,7 +81,7 @@ class TaskService
             $taskToUpdate->setPriority($updatedTask->getPriority());
 
 
-            $this->entityManager->persist($taskToUpdate);
+            $this->entityManager->persist($taskToUpdate); // Not really needed for managed entities - Doctrine already knows that when flushing, its for and update operation
             $this->entityManager->flush();
             return $taskToUpdate;
         } catch (ORMException $e) {
@@ -106,5 +106,48 @@ class TaskService
         } catch (ORMException $e) {
             dump($e);
         }
+    }
+
+    private function findAllTasksWithoutTaskThatWasMoved(int $taskId, int $fromProgressId) {
+        return $this->taskRepository->findAllTasksWithoutTaskThatWasMoved($taskId, $fromProgressId);
+    }
+
+    private function findAllTasksThatHaveGreaterOrEqualPriority(int $taskId, int $priorityNum, int $fromProgressId): array
+    {
+        return $this->taskRepository->findAllTasksThatPriorityIsGeaterThanTheNumGiven($taskId, $priorityNum, $fromProgressId);
+    }
+
+    public function updatePrioritiesOfTasksOnPreviousProgressAndNextProgress(int $taskId, string $changedColor, int $fromProgressId, int $priorityNumFromProgress, int $toProgressId, int $priorityNumToProgress)
+    {
+       if ($fromProgressId != $toProgressId) {
+           $tasksBefore = $this->findAllTasksWithoutTaskThatWasMoved($taskId, $fromProgressId);
+
+           $tasksAfter = $this->findAllTasksThatHaveGreaterOrEqualPriority($taskId, $priorityNumToProgress, $toProgressId);
+
+
+           for ($i = 0; $i < count($tasksBefore);  $i++) {
+               $tasksBefore[$i]->setPriority($i + 1);
+           }
+
+           foreach ($tasksAfter as $task) {
+               $task->setPriority($task->getPriority() + 1);
+           }
+       } else {
+           // only need to update once because the card task in ui is on the same column
+           $tasksAfter = $this->findAllTasksThatHaveGreaterOrEqualPriority($taskId, $priorityNumToProgress, $toProgressId);
+
+           foreach ($tasksAfter as $task) {
+               $task->setPriority($task->getPriority() +1);
+           }
+       }
+
+       // Set the new color and the new Priority num to the task which it was drag dropped
+        $task = $this->entityManager->find(Task::class, $taskId);
+       $progress = $this->entityManager->find(Progress::class, $toProgressId);
+        $task->setColor($changedColor);
+        $task->setProgress($progress);
+        $task->setPriority($priorityNumToProgress);
+
+        $this->entityManager->flush();
     }
 }

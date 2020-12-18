@@ -13,6 +13,7 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Serializer\SerializerInterface;
+use Symfony\Component\Validator\Constraints\Json;
 
 
 class CrudController extends AbstractController
@@ -87,7 +88,6 @@ class CrudController extends AbstractController
      * @Route("/api/task/update/{id}", name="update_task", methods={"PUT"})
      * @param $id
      * @param Request $request
-     * @param SerializerInterface $serializer
      * @param TaskService $taskService
      * @return JsonResponse
      */
@@ -124,4 +124,27 @@ class CrudController extends AbstractController
 
         return new JsonResponse(array("message" => "Task not found"), 404);
     }
+
+    /**
+     * @Route("/api/task/position/update/{id}", name="update_tasks_position", methods={"PUT"})
+     * @param $id
+     * @param Request $request
+     * @param TaskService $taskService
+     * @return JsonResponse
+     */
+    public function updatePositionOfTask($id, Request $request, TaskService $taskService): JsonResponse
+    {
+        $data = json_decode($request->getContent(), true);
+
+        $changedColor = $data["color"];
+        $fromProgressId = $data["fromProgressId"];
+        $priorityNumFromProgress = $data["priorityFrom"];
+        $toProgressId = $data["toProgressId"];
+        $priorityNumToProgress = $data["priorityTo"];
+
+        $taskService->updatePrioritiesOfTasksOnPreviousProgressAndNextProgress($id, $changedColor, $fromProgressId, $priorityNumFromProgress, $toProgressId, $priorityNumToProgress);
+
+        return new JsonResponse(array("message" =>"Task position updated successfully!"), 200);
+    }
+
 }
