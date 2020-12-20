@@ -1,12 +1,8 @@
 import Sortable from 'sortablejs';
 import { $urlToApi } from "./constants";
+import DOMPurify from 'dompurify';
 
 $(function () {
-
-
-
-
-
     let areaForProgressCards = $('.progress__body--contents');
 
     // Handle drag and drop, and sorting the cards
@@ -48,7 +44,6 @@ $(function () {
                     }
 
                     // Request to update db
-                    // TODO - MAKE A DIFFERENT ENDPOINT THAT WILL ALSO ACCEPT THE PRIORITIES OF THE OTHER CARDS TO UPDATE DB
 
                     $.ajax({
                         url: $urlToApi + `/task/position/update/${id}`,
@@ -121,12 +116,13 @@ $(function () {
         let $initializedProgressCard = $(this).closest(".progress__card");
 
 
-
         // TODO - SANITIZE
         let $inputText = $initializedProgressCard.find("input").val();
+        $inputText = DOMPurify.sanitize($inputText);
 
         // Grab any text that already existed in textarea
         let $descpriptionBeforeInitialization = $initializedProgressCard.find("textarea").val();
+        $descpriptionBeforeInitialization = DOMPurify.sanitize($descpriptionBeforeInitialization);
 
         if ($inputText !== "" && $descpriptionBeforeInitialization !== "") {
 
@@ -147,9 +143,7 @@ $(function () {
             $initializedProgressCard.find(".input-group.progress__card--input-text").attr("class", "progress__card--text")
 
 
-
             // reset to p element
-            // todo sanitize
             $initializedProgressCard.find(".form-group.progress__card--textarea-text").replaceWith($(document.createElement("p")).text($descpriptionBeforeInitialization));
 
 
@@ -205,6 +199,7 @@ $(function () {
 
         // TODO -SANITIZE!!!
         let $inputText = $editedProgressCard.find("span").text();
+        $inputText = DOMPurify.sanitize($inputText);
 
         // Replace span with input element 
         // let $editInput = $(document.createElement("input")).addClass("input-group progress__card--input-text").val($inputText);
@@ -214,6 +209,7 @@ $(function () {
         // Grab any text that already existed
         // TODO SANITIZE!!!
         let $descpriptionBeforeEdit = $editedProgressCard.find("p").text();
+        $descpriptionBeforeEdit = DOMPurify.sanitize($descpriptionBeforeEdit);
 
         // edit taxtarea
         let $editTextArea = $("<div class='form-group progress__card--textarea-text'></div>").append($("<textarea class='form-control' rows='2'></textarea>").val($descpriptionBeforeEdit));
@@ -233,9 +229,10 @@ $(function () {
         let id = $progressCardToUpdate.data("id");
 
         let $editInput = $progressCardToUpdate.find("input.form-control").val();
+        $editInput = DOMPurify.sanitize($editInput);
 
         let $editTextArea = $progressCardToUpdate.find("textarea.form-control").val();
-
+        $editTextArea = DOMPurify.sanitize($editTextArea);
 
         if ($editInput !== "" && $editTextArea !== null) {
 
@@ -273,10 +270,7 @@ $(function () {
                 $progressCardToUpdate.find(".input-group.progress__card--input-text input").replaceWith($(document.createElement("span")).text($editInput))
                 $progressCardToUpdate.find(".input-group.progress__card--input-text").attr("class", "progress__card--text")
 
-
-
                 // reset to p element
-                // todo sanitize
                 $progressCardToUpdate.find(".form-group.progress__card--textarea-text").replaceWith($(document.createElement("p")).text($editTextArea));
             })
             .fail(function (xhr, status, error) {
@@ -286,9 +280,6 @@ $(function () {
             // User is trying to create an empty card - warn him
             $progressCardToUpdate.find('#tooltip').show().animate({ opacity: 1 }, 500);
         }
-
-
-
     })
 
     // When user clicks the 'stop edit' icon - fa-times
@@ -303,35 +294,28 @@ $(function () {
         // Check if title and description are not empty and then modify
 
         let $progressCardTitle = $editedProgressCard.find("input").val();
+        $progressCardTitle = DOMPurify.sanitize($progressCardTitle);
 
         let $progressCardDesc = $editedProgressCard.find("textarea").val();
+        $progressCardDesc = DOMPurify.sanitize($progressCardDesc);
 
         if ($progressCardTitle !== "" && $progressCardDesc !== "") {
             $editedProgressCard.find(".fa-times-circle").replaceWith("<i class='fas fa-trash-alt'></i>")
 
-            let $inputText = $editedProgressCard.find("input").val();
-
-
-
             // Replace input with a span element
-            $editedProgressCard.find(".input-group.progress__card--input-text input").replaceWith($(document.createElement("span")).text($inputText))
+            $editedProgressCard.find(".input-group.progress__card--input-text input").replaceWith($(document.createElement("span")).text($progressCardTitle))
             $editedProgressCard.find(".input-group.progress__card--input-text").attr("class", "progress__card--text")
 
-            // Grab any text that already existed in textarea
-            let $descpriptionBeforeEdit = $editedProgressCard.find("textarea").val();
 
             // reset to p element
             // todo sanitize
-            $editedProgressCard.find(".form-group.progress__card--textarea-text").replaceWith($(document.createElement("p")).text($descpriptionBeforeEdit));
+            $editedProgressCard.find(".form-group.progress__card--textarea-text").replaceWith($(document.createElement("p")).text($progressCardDesc));
 
 
         } else {
             // show tooltip
             $editedProgressCard.find('#tooltip').show().animate({ opacity: 1 }, 500);
         }
-
-
-
     })
 
     // Handle deletion of card
