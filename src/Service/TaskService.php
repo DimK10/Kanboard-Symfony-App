@@ -133,12 +133,39 @@ class TaskService
                $task->setPriority($task->getPriority() + 1);
            }
        } else {
-           // only need to update once because the card task in ui is on the same column
-           $tasksAfter = $this->findAllTasksThatHaveGreaterOrEqualPriority($taskId, $priorityNumToProgress, $toProgressId);
 
-           foreach ($tasksAfter as $task) {
-               $task->setPriority($task->getPriority() +1);
-           }
+           // There are two use cases here: First, if the task moved is not the first one, then the query below must return all tasks
+           // that do not contain the task that needs to be changed, and the first element (because 1 - 1 = 0 which i dont want to happen)
+           // For this reason, i added the if condition, i order to not execute a query in whaich in two separate where clauses
+           // the query would not addd the task row with id = 1.
+
+          if ($taskId != 1) {
+              $tasksToRearrange = $this->taskRepository->findAllTasksWithoutTaskThatWasMovedAndWithoutFirstTask($taskId, $fromProgressId);
+
+              foreach ($tasksToRearrange as $task) {
+                  if ($task->getPriority() <= $priorityNumToProgress) {
+                      $task->setPriority($task->getPriority() - 1);
+                  }
+              }
+
+              $taskRepositioned = $this->entityManager->find(Task::class, $taskId);
+              $taskRepositioned->setPriority($priorityNumToProgress);
+
+              $this->entityManager->flush();
+          } else {
+              $tasksToRearrange = $this->taskRepository->findAllTasksWithoutTaskThatWasMoved($taskId, $fromProgressId);
+
+              foreach ($tasksToRearrange as $task) {
+                  if ($task->getPriority() <= $priorityNumToProgress) {
+                      $task->setPriority($task->getPriority() - 1);
+                  }
+              }
+
+              $taskRepositioned = $this->entityManager->find(Task::class, $taskId);
+              $taskRepositioned->setPriority($priorityNumToProgress);
+
+              $this->entityManager->flush();
+          }
        }
 
        // Set the new color and the new Priority num to the task which it was drag dropped

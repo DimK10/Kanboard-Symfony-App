@@ -54,6 +54,26 @@ class TaskRepository extends ServiceEntityRepository
 
     /**
      * @param int $taskId
+     * @param int $progressId
+     * @return Task[] Returns an array of Task objects
+     */
+
+    public function findAllTasksWithoutTaskThatWasMovedAndWithoutFirstTask(int $taskId, int $progressId): array
+    {
+        return $this->createQueryBuilder('t')
+            ->setParameter(":taskId", $taskId)
+            ->setParameter(":progressId", $progressId)
+            ->andWhere("t.progress = :progressId")
+            ->andWhere("t.id != :taskId")
+            ->andWhere("t.id != 1") //FIXME Does this work on each use case? Or is it a blunder?
+            ->orderBy("t.priority", "ASC")
+            ->getQuery()
+            ->getResult()
+            ;
+    }
+
+    /**
+     * @param int $taskId
      * @param int $priorityNum
      * @param int $progressId
      * @return Task[] Returns an array of Task objects
