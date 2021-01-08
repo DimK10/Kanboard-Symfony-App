@@ -6,7 +6,7 @@ namespace App\Service;
 
 use App\Repository\ProgressRepository;
 
-class ProgressService
+class ProgressService extends AbstractService
 {
 
     private $progressRepository;

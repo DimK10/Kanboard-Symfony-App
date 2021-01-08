@@ -146,6 +146,10 @@ class Workspace
         return $this->progresses;
     }
 
+    public function setProgresses(array $progresses) {
+        $this->progresses = $progresses;
+    }
+
     public function addProgressId(Progress $progressId): self
     {
         if (!$this->progresses->contains($progressId)) {

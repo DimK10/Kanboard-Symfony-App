@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}{{ parent()}} {% endblock %}
+
+{% block title %}Register!{% endblock %}
+
+{% block body %}
+<div class="container d-flex flex-row justify-content-center align-items-center">
+
+    <div class="card w-100">
+        <div class="card-body">
+            <h5 class="card-title text-center">Fill out your info and join!</h5>
+            {{ form(registerForm) }}
+        </div>
+    </div>
+
+</div>
+{% endblock %}

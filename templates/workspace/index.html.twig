@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}{{ parent()}} {% endblock %}
+
+{% block title %}Create A Workspace!{% endblock %}
+
+{% block body %}
+    <div class="container d-flex flex-row justify-content-center align-items-center">
+
+        <div class="card w-100">
+            <div class="card-body">
+                <h5 class="card-title text-center">Create your own workspace to put tasks on!</h5>
+                {{ form(workspaceForm) }}
+            </div>
+        </div>
+
+    </div>
+{% endblock %}
