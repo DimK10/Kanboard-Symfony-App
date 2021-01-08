@@ -108,7 +108,8 @@ class TaskService
         }
     }
 
-    private function findAllTasksWithoutTaskThatWasMoved(int $taskId, int $fromProgressId) {
+    private function findAllTasksWithoutTaskThatWasMoved(int $taskId, int $fromProgressId): array
+    {
         return $this->taskRepository->findAllTasksWithoutTaskThatWasMoved($taskId, $fromProgressId);
     }
 
