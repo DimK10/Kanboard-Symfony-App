@@ -35,7 +35,7 @@ class ProgressService
         return $this->progressRepository->findByIdOrderByPriority();
     }
 
-    public function create($user): array
+    public function create($workspace): array
     {
 
         $newProgresses = [];
@@ -60,7 +60,7 @@ class ProgressService
             $newProgress->setDescription($progressDescriptions[$i-1]);
             $newProgress->setColor($progressColors[$i-1]);
             $newProgress->setPriority($i);
-            $newProgress->addUser($user);
+            $newProgress->setWorkspace($workspace);
 
             array_push($newProgresses, $newProgress);
 

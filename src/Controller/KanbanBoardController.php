@@ -44,21 +44,23 @@ class KanbanBoardController extends AbstractController
 
         $username = $this->getUser()->getUsername();
         $user = $this->getDoctrine()->getRepository(User::class)->findBy(["email" => $username])[0];
-        $workspaces = $workspaceService->findAllWorkspacesForAUser($user);
+//        $workspaces = $workspaceService->findAllWorkspacesForAUser($user);
+        $workspace = $user->getWorkspaces()[0];
 
 
         // TODO - Add functionality for multiple workspaces
         // If the user is new and does not have a workspace
-        if (empty($workspaces)) {
+        if (empty($workspace)) {
             return $this->redirectToRoute('app_create_workspace');
         }
         // Get all progresses from workspace
-        $workspace = $workspaces[0];
+//        $workspace = $workspaces[0];
 //        $progresses = $this->getDoctrine()->getRepository(Progress::class)->findBy(["workspace_id" => $workspace->getId()]);
-        $progresses = $user->getProgresses();
+        $progresses = $user->getWorkspaces()[0]->getProgresses()->getValues();
+
 
         return $this->render('kanban_board/index.html.twig', [
-            'workspaces' => $workspaces,
+            'workspace' => $workspace,
             'progresses' => $progresses,
             $response
         ]);

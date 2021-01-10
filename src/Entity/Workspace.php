@@ -41,7 +41,7 @@ class Workspace
     private $tasks;
 
     /**
-     * @ORM\OneToMany(targetEntity=Progress::class, mappedBy="workspace", cascade="persist")
+     * @ORM\OneToMany(targetEntity=Progress::class, mappedBy="workspace", cascade="persist", fetch="EAGER")
      */
     private $progresses;
 

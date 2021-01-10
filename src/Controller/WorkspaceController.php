@@ -38,7 +38,7 @@ class WorkspaceController extends AbstractController
             $workspace->addUserId($this->getUser());
 
 
-            $newProgresses = $progressService->create($this->getUser());
+            $newProgresses = $progressService->create($workspace);
 
             $workspace->setProgresses($newProgresses);
             $abstractService->save($workspace);
