@@ -21,14 +21,12 @@
   <component name="ChangeListManager">
     <list default="true" id="f44fcf20-f461-4aaa-a1b4-ceccfdfb1731" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/Version20210110013046.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/styles/_login.scss" beforeDir="false" afterPath="$PROJECT_DIR$/assets/styles/_login.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/packages/security.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/security.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/KanbanBoardController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/KanbanBoardController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/WorkspaceController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/WorkspaceController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Progress.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Progress.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Workspace.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Workspace.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Service/ProgressService.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Service/ProgressService.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/kanban_board/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/kanban_board/index.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/security/login.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/security/login.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -246,10 +244,20 @@
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
-        <line-breakpoint enabled="true" type="php">
+        <line-breakpoint type="php">
           <url>file://$PROJECT_DIR$/src/Service/AbstractService.php</url>
           <line>38</line>
           <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint type="php">
+          <url>file://$PROJECT_DIR$/src/Controller/WorkspaceController.php</url>
+          <line>68</line>
+          <option name="timeStamp" value="10" />
+        </line-breakpoint>
+        <line-breakpoint type="php">
+          <url>file://$PROJECT_DIR$/src/Controller/KanbanBoardController.php</url>
+          <line>56</line>
+          <option name="timeStamp" value="11" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

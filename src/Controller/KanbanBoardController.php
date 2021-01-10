@@ -9,6 +9,7 @@ use App\Service\WorkspaceService;
 use Lexik\Bundle\JWTAuthenticationBundle\Services\JWTTokenManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Cookie;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\User\UserInterface;
@@ -18,11 +19,12 @@ class KanbanBoardController extends AbstractController
 {
     /**
      * @Route("/", name="homepage")
-     * @param WorkspaceService $workspaceService
-     * @param ProgressService $progressService
+     * @param UserInterface $userInterface
+     * @param JWTTokenManagerInterface $JWTTokenManager
+     * @param Request $request
      * @return Response
      */
-    public function index(UserInterface $userInterface, JWTTokenManagerInterface $JWTTokenManager, WorkspaceService $workspaceService, ProgressService $progressService): Response
+    public function index(UserInterface $userInterface, JWTTokenManagerInterface $JWTTokenManager, Request $request, WorkspaceService $workspaceService): Response
     {
 
 //        dd(array("token" => $JWTTokenManager->create($userInterface)));
@@ -45,21 +47,32 @@ class KanbanBoardController extends AbstractController
         $username = $this->getUser()->getUsername();
         $user = $this->getDoctrine()->getRepository(User::class)->findBy(["email" => $username])[0];
 //        $workspaces = $workspaceService->findAllWorkspacesForAUser($user);
+        $workspaces = $user->getWorkspaces()->getValues();
+
         $workspace = $user->getWorkspaces()[0];
 
+        $progresses = $user->getWorkspaces()[0]->getProgresses()->getValues();
 
-        // TODO - Add functionality for multiple workspaces
+        // Check if user is trying to change the workspace
+        $workspaceChosenId = $request->request->get("workspace_select");
+
+        if ($workspaceChosenId) {
+            $workspaceChosen = $workspaceService->findById($workspaceChosenId);
+            $workspace = $workspaceChosen;
+            $progresses = $workspaceChosen->getProgresses();
+        }
+
         // If the user is new and does not have a workspace
         if (empty($workspace)) {
             return $this->redirectToRoute('app_create_workspace');
         }
         // Get all progresses from workspace
-//        $workspace = $workspaces[0];
-//        $progresses = $this->getDoctrine()->getRepository(Progress::class)->findBy(["workspace_id" => $workspace->getId()]);
-        $progresses = $user->getWorkspaces()[0]->getProgresses()->getValues();
+
+
 
 
         return $this->render('kanban_board/index.html.twig', [
+            'workspaces' => $workspaces,
             'workspace' => $workspace,
             'progresses' => $progresses,
             $response
