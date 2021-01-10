@@ -55,7 +55,8 @@ class KanbanBoardController extends AbstractController
         // Get all progresses from workspace
         $workspace = $workspaces[0];
 //        $progresses = $this->getDoctrine()->getRepository(Progress::class)->findBy(["workspace_id" => $workspace->getId()]);
-        $progresses = $progressService->findAllByIdOrderByPriority();
+        $progresses = $user->getProgresses();
+
         return $this->render('kanban_board/index.html.twig', [
             'workspaces' => $workspaces,
             'progresses' => $progresses,

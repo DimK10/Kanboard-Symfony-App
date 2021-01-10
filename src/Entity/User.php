@@ -59,9 +59,15 @@ class User implements UserInterface
      */
     private $lastname;
 
+    /**
+     * @ORM\ManyToMany(targetEntity=Progress::class, mappedBy="users")
+     */
+    private $progresses;
+
     public function __construct()
     {
         $this->workspaces = new ArrayCollection();
+        $this->progresses = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -186,6 +192,33 @@ class User implements UserInterface
     public function setLastname(string $lastname): self
     {
         $this->lastname = $lastname;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Progress[]
+     */
+    public function getProgresses(): Collection
+    {
+        return $this->progresses;
+    }
+
+    public function addProgress(Progress $progress): self
+    {
+        if (!$this->progresses->contains($progress)) {
+            $this->progresses[] = $progress;
+            $progress->addUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeProgress(Progress $progress): self
+    {
+        if ($this->progresses->removeElement($progress)) {
+            $progress->removeUser($this);
+        }
 
         return $this;
     }

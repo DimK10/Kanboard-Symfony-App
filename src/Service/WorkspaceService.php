@@ -8,7 +8,7 @@ use App\Entity\User;
 use App\Entity\Workspace;
 use App\Repository\WorkspaceRepository;
 
-class WorkspaceService extends AbstractService
+class WorkspaceService
 {
 
 

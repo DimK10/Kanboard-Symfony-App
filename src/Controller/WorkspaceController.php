@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Workspace;
 use App\Form\WorkspaceFormType;
+use App\Service\AbstractService;
 use App\Service\ProgressService;
 use App\Service\WorkspaceService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -16,11 +17,11 @@ class WorkspaceController extends AbstractController
     /**
      * @Route("/workspace/create", name="app_create_workspace")
      * @param Request $request
-     * @param WorkspaceService $workspaceService
+     * @param AbstractService $abstractService
      * @param $progressService
      * @return Response
      */
-    public function create(Request $request, WorkspaceService $workspaceService, ProgressService $progressService): Response
+    public function create(Request $request, AbstractService $abstractService, ProgressService $progressService): Response
     {
         $workspace = new Workspace();
 
@@ -35,9 +36,12 @@ class WorkspaceController extends AbstractController
             $workspace = $workspaceForm->getData();
 
             $workspace->addUserId($this->getUser());
-            $progresses = $progressService->findAllByIdOrderByPriority();
-            $workspace->setProgresses($progresses);
-            $workspaceService->save($workspace);
+
+
+            $newProgresses = $progressService->create($this->getUser());
+
+            $workspace->setProgresses($newProgresses);
+            $abstractService->save($workspace);
 
             return $this->redirectToRoute('homepage');
         }

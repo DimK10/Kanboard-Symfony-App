@@ -30,7 +30,7 @@ class Progress
     private $tasks;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Workspace::class, inversedBy="progresses")
+     * @ORM\ManyToOne(targetEntity=Workspace::class, inversedBy="progresses", cascade="persist")
      */
     private $workspace;
 
@@ -44,9 +44,15 @@ class Progress
      */
     private $priority;
 
+    /**
+     * @ORM\ManyToMany(targetEntity=User::class, inversedBy="yes")
+     */
+    private $users;
+
     public function __construct()
     {
         $this->tasks = new ArrayCollection();
+        $this->users = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -128,6 +134,30 @@ class Progress
     public function setPriority(int $priority): self
     {
         $this->priority = $priority;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|User[]
+     */
+    public function getUsers(): Collection
+    {
+        return $this->users;
+    }
+
+    public function addUser(User $user): self
+    {
+        if (!$this->users->contains($user)) {
+            $this->users[] = $user;
+        }
+
+        return $this;
+    }
+
+    public function removeUser(User $user): self
+    {
+        $this->users->removeElement($user);
 
         return $this;
     }

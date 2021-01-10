@@ -11,7 +11,7 @@ use App\Repository\TaskRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\ORMException;
 
-class TaskService extends AbstractService
+class TaskService
 {
 
     private $entityManager;

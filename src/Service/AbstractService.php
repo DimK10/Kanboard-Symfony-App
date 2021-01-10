@@ -8,13 +8,14 @@ use App\Entity\Progress;
 use App\Entity\Task;
 use App\Entity\User;
 use App\Entity\Workspace;
+use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityManagerInterface;
 
 /**
  * This abstract class was created to handle the basic crud operations from the entityManager
  * @package App\Service
  */
-abstract class AbstractService
+class AbstractService
 {
 
     private $entityManager;
