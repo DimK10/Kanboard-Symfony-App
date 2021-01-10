@@ -36,12 +36,12 @@ class Workspace
     private $users;
 
     /**
-     * @ORM\OneToMany(targetEntity=Task::class, mappedBy="workspace")
+     * @ORM\OneToMany(targetEntity=Task::class, mappedBy="workspace", cascade={"persist", "remove"})
      */
     private $tasks;
 
     /**
-     * @ORM\OneToMany(targetEntity=Progress::class, mappedBy="workspace", cascade="persist", fetch="EAGER")
+     * @ORM\OneToMany(targetEntity=Progress::class, mappedBy="workspace", cascade={"persist", "remove"}, fetch="EAGER")
      */
     private $progresses;
 

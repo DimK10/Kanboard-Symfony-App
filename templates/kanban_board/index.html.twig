@@ -31,9 +31,14 @@
             <div class="jumbotron">
                 <h1 class="workspace__title display-4" data-id="{{ workspace.id }}">{{ workspace.name }}</h1>
                 <p class="lead">{{ workspace.description }}</p>
+                <form action="{{ path("app_delete_workspace", {'id': workspace.id }) }}">
+                    <button class="btn btn-sm btn-danger mt-5" type="submit">
+                        Delete This Workspace!
+                    </button>
+                </form>
             </div>
-            <form action="{{ path("homepage") }}" method="post">
-                <div class="form-row align-items-center">
+            <form action="{{ path("homepage") }}" method="post" class="d-flex align-items-center">
+                <div class="form-row">
                     <div class="col">
                         <label class="mb-0" for="exampleFormControlSelect1">Select A different workspace</label>
                         <select class="form-control mt-3" id="exampleFormControlSelect1" name="workspace_select">

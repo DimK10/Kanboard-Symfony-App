@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\User;
 use App\Entity\Workspace;
 use App\Form\WorkspaceFormType;
 use App\Service\AbstractService;
@@ -51,5 +52,23 @@ class WorkspaceController extends AbstractController
         return $this->render('workspace/index.html.twig', [
             'workspaceForm' => $workspaceForm->createView(),
         ]);
+    }
+
+    /**
+     * @Route("/workspace/delete/{id}", name="app_delete_workspace", requirements={"id" = "\d+"})
+     * @param $id
+     * @param WorkspaceService $workspaceService
+     * @return Response
+     */
+    public function delete($id, WorkspaceService $workspaceService): Response
+    {
+        $userEmail = $this->getUser()->getUsername();
+
+        $user = $this->getDoctrine()->getRepository(User::class)->findBy(["email" => $userEmail])[0];
+
+        $workspaceService->deleteWorkspace($id, $user);
+
+        return $this->redirectToRoute('homepage');
+
     }
 }
