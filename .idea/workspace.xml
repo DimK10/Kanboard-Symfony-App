@@ -21,10 +21,6 @@
   <component name="ChangeListManager">
     <list default="true" id="f44fcf20-f461-4aaa-a1b4-ceccfdfb1731" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/WorkspaceController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/WorkspaceController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Workspace.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Workspace.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Service/WorkspaceService.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Service/WorkspaceService.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/kanban_board/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/kanban_board/index.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
