@@ -31,7 +31,7 @@ $(function () {
                     let $fromProgressId = $(e.from).parent().data("id");
                     let $toProgressId = $parentColumn.data("id");
                     let $priorityFromProgress = $(e.clone).data("id");
-                    console.log($priorityFromProgress)
+                    // console.log($priorityFromProgress)
                     let $priorityToProgress = $(e.item).index() + 1;
 
 
@@ -75,11 +75,11 @@ $(function () {
         // Get background-color of .progress__body--title
 
         let $color = $parentOfPlusIcon.css('background-color');
-        console.log($color);
+        // console.log($color);
 
         // create new div
         let $areaForNewProgressCard = $containerOfProgresses.find(".progress__body--contents");
-        console.log($areaForNewProgressCard);
+        // console.log($areaForNewProgressCard);
 
         $areaForNewProgressCard.append(
             "<div class=\"progress__card\" data-id=\"\" style=\"background-color: " + $color + "\">\n" +
@@ -171,7 +171,7 @@ $(function () {
                             return !$(this).attr('data-id');
                         });
 
-                    console.log($newCard)
+                    // console.log($newCard)
 
                     $newCard.attr("data-id", result.id)
                 })
