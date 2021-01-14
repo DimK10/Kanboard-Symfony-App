@@ -49,7 +49,13 @@ class KanbanBoardController extends AbstractController
 //        $workspaces = $workspaceService->findAllWorkspacesForAUser($user);
         $workspaces = $user->getWorkspaces()->getValues();
 
+
+        // If the user is new and does not have a workspace
+        if (empty($workspaces)) {
+            return $this->redirectToRoute('app_create_workspace');
+        }
         $workspace = $user->getWorkspaces()[0];
+
 
         $progresses = $user->getWorkspaces()[0]->getProgresses()->getValues();
 
@@ -62,10 +68,6 @@ class KanbanBoardController extends AbstractController
             $progresses = $workspaceChosen->getProgresses();
         }
 
-        // If the user is new and does not have a workspace
-        if (empty($workspace)) {
-            return $this->redirectToRoute('app_create_workspace');
-        }
         // Get all progresses from workspace
 
 
