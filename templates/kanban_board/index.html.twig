@@ -5,10 +5,25 @@
 {% block body %}
     <body>
     <main>
-        <nav class="navbar navbar-light bg-primary position-fixed main-page__navbar">
+        <nav class="navbar navbar-expand-lg navbar-light bg-primary position-fixed main-page__navbar">
             <span class="navbar-brand mb-0 h1 text-white ">KanBoard App</span>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-                    <li class="nav-item ml-5 form-inline my-2 my-lg-0">
+                    <li class="nav-item dropdown ">
+                        <a class="nav-link  dropdown-toggle text-light ml-1" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fas fa-cog"></i>
+                            Settings
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="#">Workspaces</a>
+                            <a class="dropdown-item" href="#">Columns</a>
+                        </div>
+                    </li>
+
+                    <li class="nav-item form-inline my-2 my-lg-0">
 
                         <a class="nav-link text-light ml-1" href="{{ path('app_create_workspace') }}">
                             <i class="fas fa-plus"></i>
@@ -17,14 +32,15 @@
                     </li>
 
                 </ul>
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link text-light" href="{{ path('app_logout') }}">Logout</a>
-                </li>
-            </ul>
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link text-light" href="{{ path('app_logout') }}">Logout</a>
+                    </li>
+                </ul>
+            </div>
 
         </nav>
-        <div class="container d-flex flex-column main-page__container">
+        <div class="container-fluid d-flex flex-column main-page__container">
 
             {# TODO: CHANGE DATA-ID #}
         <div class="d-flex justify-content-between">
@@ -57,7 +73,8 @@
         </div>
 
 
-            <div class="row progress__container">
+            <div class="container-fluid d-flex flex-column" style="height: 100vh">
+                <div class="row progress__container">
                 {% for progress in progresses %}
                     <div class="col-3">
                         <div class="progress__body" data-id="{{ progress.id }}">
@@ -108,7 +125,7 @@
                     </div>
                 {% endfor %}
             </div>
-
+            </div>
 
         </div>
     </main>

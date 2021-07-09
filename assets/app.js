@@ -17,7 +17,8 @@ global.$ = global.jQuery = $
 
 
 // import 'jquery-ui-sortable-npm';
-
+import '../node_modules/popper.js/dist/popper'
+import '../node_modules/bootstrap/dist/js/bootstrap'
 import './js/kanBanBoard.js'
 
 console.log('Hello Webpack Encore! Edit me in assets/app.js');

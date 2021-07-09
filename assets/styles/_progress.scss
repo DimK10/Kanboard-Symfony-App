@@ -1,8 +1,9 @@
 /* customization for bootstrap card */
 .progress {
   &__container {
-    height: 100%;
-    flex: 1;
+    //height: 100%;
+    //flex: 1;
+    flex-grow: 1;
   }
 
   &__body {
