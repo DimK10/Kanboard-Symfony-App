@@ -1,4 +1,4 @@
-const $urlToApi = "http://kanboard-symfony-app.test/api";
+const $urlToApi = "https://kanboard.applicationonline.site/api";
 
 
 export {
